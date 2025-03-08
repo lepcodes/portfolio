@@ -1,0 +1,34 @@
+---
+import MyLogo from "../icons/MyLogo.astro";
+
+
+---
+
+<nav class="flex items-center justify-between px-10 pt-5 fade-in-tb">
+  <div class="text-md font-bold p-1 m-0 border-2 border-gray-300 rounded-xl text-gray-300 hover:text-gray-900 hover:bg-gray-200">
+    <MyLogo class="h-8 w-8"/>
+  </div>
+
+  <div class="absolute left-1/2 transform -translate-x-1/2 scale-up-hor-right mt-0.5">
+    <ul
+      class="flex gap-10 rounded-lg bg-[#33333314] px-6 py-2 text-xs items-center justify-center shadow-[0px_0px_4px_rgba(200,200,200,0.7)]"
+    >
+      <li class="slide-tl-1">
+        <a href="#About" class="py-2 hover:[text-shadow:0px_0px_10px_#31b9b4] hover:text-[#31b9b4]">About</a>
+      </li>
+      <li class="slide-tl-2">
+        <a href="#Experience" class="py-2 hover:[text-shadow:0px_0px_10px_#31b9b4] hover:text-[#31b9b4]">Experience</a>
+      </li>
+      <li class="slide-tl-3">
+        <a href="#Projects" class="py-2 hover:[text-shadow:0px_0px_10px_#31b9b4] hover:text-[#31b9b4]">Projects</a>
+      </li>
+      <li class="slide-tl-4">
+        <a href="#Education" class="py-2 hover:[text-shadow:0px_0px_10px_#31b9b4] hover:text-[#31b9b4]">Education</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="rounded-lg px-3 py-1 bg-gray-200">
+    <a href="/" class="text-sm font-bold text-black"> Contact Me </a>
+  </div>
+</nav>

@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+// import '@fontsource/roboto';
+import '@fontsource/inter';
 ---
 <!doctype html>
 <html lang="en", class="dark scroll-smooth">
@@ -10,7 +12,7 @@ import "../styles/global.css";
 		<meta name="generator" content={Astro.generator} />
 		<title>Portfolio</title>
 	</head>
-	<body class="bg-cyan-950 dark:bg-gray-900 dark:text-neutral-100">
+	<body class="dark:text-neutral-100 font-primary" style="line-height: 1.7em;">
 		<slot />
 	</body>
 </html>

@@ -1,60 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-primary: 'Inter', sans-serif;
+}
+
 html {
-  scroll-padding-top: 4rem;
+  scroll-padding-top: 6rem;
   scroll-behavior:  smooth;
 }
 
 body {
   overflow-x: hidden;
+  background: radial-gradient(circle, rgba(0,32,37,1) 0%, rgba(0,0,0,1) 100%);
+  height: 100vh;
+  background-attachment: fixed;
 }
 
 @layer components {
-  nav a {
+  nav > a {
     position: relative;
     padding-left: 50px;
     transition: padding-left 0.1s ease-in-out;
     color: gray;
+    padding-top: 0.8rem;  
+    padding-bottom: 0.8rem;
+    /* border: 1px solid gray; */
   }
   
-  nav a:hover {
+  nav > a:hover {
     padding-left: 90px;
     @apply text-white;
   }
 
-  nav a.active {
+  nav > a.active {
     padding-left: 90px;
-    @apply text-cyan-400;
+    @apply text-[#31b9b4];
   }
 
-
-  nav a::before {
+  nav > a::before {
     content: "";
     display: block;
     position: absolute;
     width: 40px;
-    height: 1px;
+    height: 2px;
     top: 50%;
     left: 0;
     background-color: gray;
     transition: width 0.1s ease-in-out;
   }
   
-  nav a:hover::before {
+  nav > a:hover::before {
     width: 80px;
     @apply bg-white;
   }
 
-  nav a.active::before {
+  nav > a.active::before {
     width: 80px;
     height: 2px;
-    @apply bg-cyan-400;
+    @apply bg-[#31b9b4];
   }
   
-  /* animations fadeIn */
-  @keyframes fadeIn {
+  /* Animation for the Sections */
+  @keyframes fade-in-rl {
     from {
       opacity: 0;
       transform: translateX(50%);
@@ -64,15 +74,25 @@ body {
       transform: translateX(0);
     }
   }
-
-  section {
-    animation: fadeIn 10s linear forwards;
-    animation-timeline: view();
-    animation-range: entry 0% entry 50%;
+  .fade-in-rl { 
+    animation: fade-in-rl 0.3s ease-in-out forwards; 
   }
 
+  @keyframes fade-out-lr {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(50%);
+    }
+  }
+  .fade-out-lr{
+    animation: fade-out-lr 0.2s ease-in-out forwards;
+  }
 
-  @keyframes fadeIn-reverse {
+  @keyframes fade-in-lr {
     from {
       opacity: 0;
       transform: translateX(-50%);
@@ -82,10 +102,119 @@ body {
       transform: translateX(0);
     }
   }
-  header {
-    animation: fadeIn-reverse 10s linear forwards;
-    animation-timeline: view();
-    animation-range: entry 0% entry 50%;
+  .fade-in-lr {
+    animation: fade-in-lr 0.3s ease-in-out forwards;
   }
 
+  @keyframes fade-out-rl {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+  }
+  .fade-out-rl{
+    animation: fade-out-rl 0.2s ease-in-out forwards;
+  }
+
+  /* Animation for the Explore Button */
+  @keyframes bounce-2 {
+    0% { 
+      transform: translateY(0); /* Start from where fadeInVertical ends */
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+    50% { 
+      transform: translateY(-25%); /* Move downward first */
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    100% { 
+      transform: translateY(0); /* Return to starting position */
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+  @keyframes fade-in-bt {
+    from {
+      opacity: 0;
+      transform: translateY(50%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+  .fade-in-bounce {
+    visibility: hidden;
+    animation: fade-in-bt 0.5s ease-in-out forwards 1.5s, 
+               bounce-2 1s ease-in-out infinite 1.5s;
+  }
+
+  @keyframes fade-out-bt {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-50%);
+    }
+  }
+  .fade-out-bt {
+    animation: fade-out-bt 0.5s ease-in-out forwards;
+  }
+
+  /* Animation for the NavBar Elements */
+  @keyframes fade-in-tb {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0)
+    }
+  }
+  .fade-in-tb {
+    animation: fade-in-tb 1s ease-in-out forwards;
+  }
+
+  @keyframes scale-up-hor-right {
+    0% {
+      transform: scaleX(0);
+      transform-origin: 100% 100%;
+    }
+    100% {
+      transform: scaleX(1);
+      transform-origin: 100% 100%;
+    }
+  }
+  .scale-up-hor-right {
+    animation: scale-up-hor-right 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both 0.5s;
+  }
+
+  @keyframes slide-tl {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) translateX(0);
+    }
+  }
+  .slide-tl-1 {
+    animation: slide-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.7s;
+  }
+  .slide-tl-2 {
+    animation: slide-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.9s;
+  }
+  .slide-tl-3 {
+    animation: slide-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 1.1s;
+  }
+  .slide-tl-4 {
+    animation: slide-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 1.3s;
+  } 
 }

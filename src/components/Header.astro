@@ -1,46 +1,27 @@
 ---
+import Network from './Network.astro';
 --- 
-
-<header id="Header" class="py-18 h-screen sticky top-0 flex flex-col gap-8 w-[40%]">
-    <h1 class="text-5xl font-bold">
-        Luis Preciado
-    </h1>
-    <h2 class="text-2xl font-bold">
-        AI and Robotics Engineer
-    </h2>
-    <h3 class="text-md text-gray-400 mb-8">
-        Magna qui irure laborum eiusmod amet laborum minim ex qui adipisicing proident duis. Incididunt enim culpa occaecat do cillum. Excepteur ut qui nisi veniam duis nisi esse magna enim.
-    </h3>
-
-    <nav class="flex flex-col gap-6 w-fit text-xs font-bold">
-        <a href="#About" class="">ABOUT</a>
-        <a href="#Experience" class="">EXPERIENCE</a>
-        <a href="#Projects" class="">PROJECTS</a>
-        <a href="#Education" class="">EDUCATION</a>
-        <a href="#Contact" class="">CONTACT</a>
-    </nav>
-</header>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach((link) => {
-                        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
-                    });
-                }
-            });
-        },
-        {
-            threshold: 0.5
-        });
-
-        sections.forEach((section) => {
-            observer.observe(section);
-        });
-    });
-</script>
+<div class="flex h-screen sticky top-0 f w-[40%] max-w-[400px]">
+    <header class="flex flex-col justify-between">
+        <div>
+            <h1 class="text-5xl font-extrabold mb-5 tracking-wide mt-24">
+                Luis Preciado
+            </h1>
+            <h2 class="text-2xl font-bold mb-2">
+                AI and Robotics Engineer
+            </h2>
+            <h3 class="text-md text-gray-400">
+                Magna qui irure laborum eiusmod amet laborum minim ex qui adipisicing proident duis. Incididunt enim culpa occaecat do cillum. 
+            </h3>
+        </div>
+        
+        <nav class="flex flex-col w-fit text-xs font-bold tracking-[0.25em]">
+            <a href="#About" class="">ABOUT</a>
+            <a href="#Experience" class="">EXPERIENCE</a>
+            <a href="#Projects" class="">PROJECTS</a>
+            <a href="#Education" class="">EDUCATION</a>
+            <a href="#Contact" class="">CONTACT</a>
+        </nav>
+        <Network/>
+    </header>
+</div>

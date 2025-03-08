@@ -5,16 +5,26 @@ import About from '../components/About.astro';
 import Experience from '../components/Experience.astro';
 import Education from '../components/Education.astro';
 import Projects from '../components/Projects.astro';
+import Chat from '../components/chatbot/Chat';
+import NavBar from '../components/NavBar.astro';
+import ChevronIcon from '../icons/ChevronIcon.astro';
 ---
 
 <Layout>
-  <div class="border border-gray-400 flex h-screen w-full rounded-lg">
-
+  <div class="flex flex-col h-screen gap-8">
+    <NavBar />
+    <Chat client:load/>
+    <a class="fade-in-bounce flex flex-col justify-end items-center text-gray-500 text-sm font-bold hover:text-white" 
+      href="#Header"
+      id="Explore">
+      Explore Portfolio
+      <ChevronIcon className='h-6 w-6 text-white'/>
+    </a>
   </div>
-
-  <div class="flex gap-22 px-22">
+  
+  <div class="flex gap-22 px-22 justify-evenly">
     <Header/>
-    <main class="py-16 flex flex-col gap-16 w-[60%]">
+    <main class="flex flex-col gap-24 max-w-[600px] w-[60%]">
       <About/>
       <Experience/>
       <Projects/>
@@ -22,3 +32,59 @@ import Projects from '../components/Projects.astro';
     </main>
   </div>
 </Layout>
+
+<script>
+import { navigate } from "astro:transitions/client";
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    const explore = document.querySelector('#Explore');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log(entry.target.id);
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+        // entry.target.classList.toggle('fade-in-rl', entry.isIntersecting);
+        // entry.target.classList.toggle('fade-out-lr', !entry.isIntersecting);
+      });
+    },
+    {
+      threshold: 0.1
+    });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+
+    // const observer2 = new IntersectionObserver((entries) => {
+    //   entries.forEach((entry) => {
+    //     entry.target.classList.toggle('fade-in-lr', entry.isIntersecting);
+    //     entry.target.classList.toggle('fade-out-rl', !entry.isIntersecting);
+    //   });
+    // },
+    // {
+    //   threshold: 0.2
+    // });
+    // observer2.observe(header ? header : sections[0]);
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY > 20) {
+        explore?.classList.remove('fade-in-bounce');
+        explore?.classList.add('fade-out-bt');
+      }
+      if (scrollY === 0) {
+        explore?.classList.remove('fade-out-bt');
+        explore?.classList.add('fade-in-bounce');
+      }
+    });
+  });
+</script>
