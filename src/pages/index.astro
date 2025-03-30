@@ -11,10 +11,10 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
 ---
 
 <Layout>
-  <div class="flex flex-col h-screen gap-8">
-    <NavBar />
+  <NavBar />
+  <div class="flex flex-col h-[calc(100vh-4rem)] gap-8 md:pt-18 md:h-screen">
     <Chat client:load/>
-    <a class="fade-in-bounce flex flex-col justify-end items-center text-gray-500 text-sm font-bold hover:text-white" 
+    <a class="fade-in-bounce flex flex-col justify-end items-center md:text-gray-500 text-sm font-bold hover:text-white" 
       href="#About"
       id="Explore">
       Explore Portfolio
@@ -22,9 +22,9 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
     </a>
   </div>
   
-  <div class="flex gap-22 px-22 justify-evenly">
+  <div class="flex gap-22 px-10 md:px-22 justify-evenly w-full">
     <Header/>
-    <main class="flex flex-col gap-24 max-w-[600px] w-[60%]">
+    <main class="flex flex-col gap-24 md:max-w-[600px] md:w-[60%]">
       <About/>
       <Experience/>
       <Projects/>
