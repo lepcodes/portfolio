@@ -3,11 +3,55 @@ import LinkedInIcon from "../icons/LinkedInIcon.astro";
 import GithubIcon from "../icons/GithubIcon.astro";
 import MailIcon from "../icons/MailIcon.astro";
 import PhoneIcon from "../icons/PhoneIcon.astro";
+import ResumeIcon from "../icons/ResumeIcon.astro";
 ---
 
 <div id="Network" class="flex items-center mb-24 gap-4 text-gray-400">
-    <a class="hover:text-gray-200" href=""><LinkedInIcon class="h-5.5 w-5.5"/></a>
-    <a class="hover:text-gray-200" href=""><GithubIcon class="h-6 w-6"/></a>
-    <a class="hover:text-gray-200" href=""><MailIcon class="h-7 w-7"/></a>
-    <a class="hover:text-gray-200" href=""><PhoneIcon class="h-6 w-6"/></a>
+  <!-- LinkedIn -->
+  <a
+    class="relative group flex items-center hover:text-gray-200 mr-0 hover:mr-16 transition-all duration-300 ease-out"
+    href="https://www.linkedin.com/in/luispreciado"
+  >
+    <LinkedInIcon class="h-8" />
+    <span
+      class="absolute font-bold left-full pl-2 opacity-0 group-hover:opacity-100 -translate-x-[50%] group-hover:translate-x-0 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto"
+      >LinkedIn</span
+    >
+  </a>
+
+  <!-- Github -->
+  <a
+    class="relative group flex items-center hover:text-gray-200 mr-0 hover:mr-14 transition-all duration-300 ease-out"
+    href="https://github.com/lepcodes"
+  >
+    <GithubIcon class="h-8" />
+    <span
+      class="absolute font-bold left-full pl-2 opacity-0 group-hover:opacity-100 -translate-x-[50%] group-hover:translate-x-0 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto"
+      >GitHub</span
+    >
+  </a>
+
+  <!-- Mail -->
+  <a
+    class="relative group flex items-center hover:text-gray-200 mr-0 hover:mr-8 transition-all duration-300 ease-out"
+    href="mailto:luispre99@gmail.com"
+  >
+    <MailIcon class="h-9" />
+    <span
+      class="absolute font-bold left-full pl-3 opacity-0 group-hover:opacity-100 -translate-x-[50%] group-hover:translate-x-0 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto"
+      >Mail</span
+    >
+  </a>
+
+  <!-- Resume -->
+  <a
+    class="relative group flex items-center hover:text-gray-200 mr-0 hover:mr-12 transition-all duration-300 ease-out"
+    href=""
+  >
+    <ResumeIcon class="h-8 w-8" />
+    <span
+      class="absolute font-bold left-full pl-2 opacity-0 group-hover:opacity-100 -translate-x-[50%] group-hover:translate-x-0 transition-all duration-300 ease-out pointer-events-none group-hover:pointer-events-auto"
+      >Resume</span
+    >
+  </a>
 </div>

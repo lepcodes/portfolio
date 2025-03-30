@@ -1,5 +1,7 @@
 ---
-import type { Experience } from './types.d.ts';
+import type { Experience } from './types/types';
+import ExperienceItem from './ExperienceItem.astro';
+
 const experience: Experience[] = [
   {
     title: "AI and Robotics Engineer",
@@ -8,6 +10,7 @@ const experience: Experience[] = [
     endDate: "2025",
     company: "Google",
     location: "San Francisco, CA",
+    url: "https://www.google.com"
   },
   {
     title: "AI and Robotics Engineer",
@@ -16,25 +19,16 @@ const experience: Experience[] = [
     endDate: "2025",
     company: "Google",
     location: "San Francisco, CA",
-  },
-  {
-    title: "AI and Robotics Engineer",
-    description: "Sint veniam magna in et ad aliqua proident est Lorem id eu sunt minim.",
-    startDate: "2023",
-    endDate: "2025",
-    company: "Google",
-    location: "San Francisco, CA",
+    url: "https://www.google.com"
   }
 ];
-
-import ExperienceItem from './ExperienceItem.astro';
 
 ---
 <section id="Experience" class="flex flex-col gap-4">
   <h1 class="text-3xl font-bold mb-6">
     Experience
   </h1>
-  <ol class="flex flex-col gap-8 ">
+  <ol class="flex flex-col gap-8">
     {experience.map((experience) => {
       return <ExperienceItem experience={experience} />
     })}

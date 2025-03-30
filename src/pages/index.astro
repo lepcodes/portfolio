@@ -15,7 +15,7 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
     <NavBar />
     <Chat client:load/>
     <a class="fade-in-bounce flex flex-col justify-end items-center text-gray-500 text-sm font-bold hover:text-white" 
-      href="#Header"
+      href="#About"
       id="Explore">
       Explore Portfolio
       <ChevronIcon className='h-6 w-6 text-white'/>
@@ -34,8 +34,7 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
 </Layout>
 
 <script>
-import { navigate } from "astro:transitions/client";
-
+  const bgColor = '#002025';
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     const sections = document.querySelectorAll('section');
@@ -50,8 +49,6 @@ import { navigate } from "astro:transitions/client";
             link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
           });
         }
-        // entry.target.classList.toggle('fade-in-rl', entry.isIntersecting);
-        // entry.target.classList.toggle('fade-out-lr', !entry.isIntersecting);
       });
     },
     {
@@ -61,19 +58,8 @@ import { navigate } from "astro:transitions/client";
     sections.forEach((section) => {
       observer.observe(section);
     });
-
-
-    // const observer2 = new IntersectionObserver((entries) => {
-    //   entries.forEach((entry) => {
-    //     entry.target.classList.toggle('fade-in-lr', entry.isIntersecting);
-    //     entry.target.classList.toggle('fade-out-rl', !entry.isIntersecting);
-    //   });
-    // },
-    // {
-    //   threshold: 0.2
-    // });
-    // observer2.observe(header ? header : sections[0]);
-
+    
+    const body = document.querySelector('body');
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
 
@@ -84,6 +70,27 @@ import { navigate } from "astro:transitions/client";
       if (scrollY === 0) {
         explore?.classList.remove('fade-out-bt');
         explore?.classList.add('fade-in-bounce');
+      }
+
+      if (body) {
+        const lastMouseEvent = body.dataset.lastMouseEvent; // Store the last mouse event
+        if (lastMouseEvent) {
+          const e = JSON.parse(lastMouseEvent);
+          const yPos = e.clientY + window.scrollY;
+          body.style.background = `radial-gradient(circle at ${e.clientX}px ${yPos}px, #003631 0%, rgba(0,0,0,1) 500px)`;
+        }
+      }
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      console.log(window.scrollY);
+      if (body) {
+        body.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY + window.scrollY}px, #003634 0%, rgba(0,0,0,1) 500px)`
+      }
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (body) {
+        body.dataset.lastMouseEvent = JSON.stringify({ clientX: e.clientX, clientY: e.clientY });
       }
     });
   });

@@ -1,18 +1,62 @@
 ---
+import SchoolIcon from "../icons/SchoolIcon.astro";
+import CalendarIcon from "../icons/CalendarIcon.astro";
+import CertificateIcon from "../icons/CertificateIcon.astro";
+import type { Education } from "./types/types";
+
+const education: Education[] = [
+  {
+    title: "Master in Artificial Intelligence",
+    school: "University of California",
+    startDate: "2024",
+    endDate: "Present",
+    location: "San Francisco, CA",
+    description: "Proficiency in Python, JavaScript, HTML, CSS, and React",
+    url: "https://www.google.com"
+  },
+  {
+    title: "Bachelor in Robotics Engineering",
+    school: "University of California",
+    startDate: "2022",
+    endDate: "2024",
+    location: "San Francisco, CA",
+    description: "Research in Robotics, Computer Vision, and Machine Learning",
+    url: "https://www.google.com"
+  },
+];
 
 ---
 
-<section id="Education" class="flex flex-col gap-4 animate-fadeIn">
+<section id="Education" class="flex flex-col gap-4 animate-fadeIn mb-20">
   <h1 class="text-3xl font-bold mb-6">
     Education
   </h1>
-  <p class="text-gray-400 mb-40">
-    Magna consectetur nostrud elit ullamco fugiat. Excepteur magna ea commodo sint dolor dolor ullamco. Ipsum dolor irure dolore cupidatat Lorem aute cupidatat officia.
+  <div class="flex flex-col gap-4">
+    {education.map(education => (
+      <article class="flex flex-row gap-4 rounded-2xl p-4 hover:shadow-2xl hover:bg-[#1f938f18] hover:scale-101 transition-all duration-200">
+        <div class="flex items-center border-gray-700 rounded-full p-3 mt-1 bg-[#1f938f4a] text-white h-fit w-fit">
+          <SchoolIcon class="h-8 w-8"/> 
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xl font-bold">
+            {education.title}
+          </h2>
+          <p class="text-base text-[#31b9b4]">  
+            {education.school}
+          </p>
+          <p class="text-base text-gray-400 flex flex-row gap-2 items-center">
+            <CalendarIcon class="h-4 w-4"/>
+            {education.startDate} - {education.endDate}
+          </p>
+          <ul>
+            <li class="flex flex-row gap-2 items-center ">
+              {education.description}
+            </li>
+          </ul>
 
-Ut nostrud cupidatat nulla eiusmod incididunt. Ullamco aute Lorem Lorem anim non eiusmod ea anim magna velit nisi nisi. Do id Lorem sint ad officia minim ad anim. Incididunt incididunt cillum occaecat nisi nisi cillum veniam commodo deserunt duis esse occaecat. Incididunt enim eu reprehenderit proident anim voluptate irure sit pariatur in.
+        </div>
+      </article>
+    ))}
 
-Cupidatat ut labore mollit consequat. Esse sint ipsum proident id in velit est. Exercitation amet aliquip incididunt pariatur. Id velit sunt cupidatat elit culpa. Duis eu id id dolore nisi irure duis culpa nulla ad ipsum.
-
-Sint do magna occaecat exercitation magna esse ea minim cupidatat. Et ex voluptate mollit est ipsum. Non exercitation eiusmod aliquip id velit Lorem anim laboris fugiat eiusmod.
-  </p>
+  </div>
 </section>

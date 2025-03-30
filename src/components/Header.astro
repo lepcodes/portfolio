@@ -3,16 +3,20 @@ import Network from './Network.astro';
 --- 
 <div class="flex h-screen sticky top-0 f w-[40%] max-w-[400px]">
     <header class="flex flex-col justify-between">
-        <div>
-            <h1 class="text-5xl font-extrabold mb-5 tracking-wide mt-24">
+        <div class="flex flex-col items-start gap-4">
+            <h1 class="text-5xl font-extrabold tracking-wide mt-24 text-gray-200">
                 Luis Preciado
             </h1>
-            <h2 class="text-2xl font-bold mb-2">
+            <h2 class="text-2xl font-bold text-gray-200">
                 AI and Robotics Engineer
             </h2>
             <h3 class="text-md text-gray-400">
-                Magna qui irure laborum eiusmod amet laborum minim ex qui adipisicing proident duis. Incididunt enim culpa occaecat do cillum. 
+                Magna qui irure laborum eiusmod amet laborum minim ex qui adipisicing proident duis.
             </h3>
+            <div class="border-2 flex items-center gap-2 rounded-full px-2 py-1 border-gray-500 text-gray-200 text-xs tracking-wider hover:text-green-300 hover:border-green-600">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                Open to Work
+            </div>
         </div>
         
         <nav class="flex flex-col w-fit text-xs font-bold tracking-[0.25em]">
@@ -20,8 +24,9 @@ import Network from './Network.astro';
             <a href="#Experience" class="">EXPERIENCE</a>
             <a href="#Projects" class="">PROJECTS</a>
             <a href="#Education" class="">EDUCATION</a>
-            <a href="#Contact" class="">CONTACT</a>
+            <!-- <a href="#Contact" class="">CONTACT</a> -->
         </nav>
+
         <Network/>
     </header>
 </div>

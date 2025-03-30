@@ -101,11 +101,11 @@ export default function Chat() {
           {
             messageHistory.length == 0
             ?
-            <div className={`flex flex-col items-center justify-center w-[40%] mb-5 ${firstMessage ? '' : 'flex-out'}`}>
+            <div className={`flex flex-col items-center justify-center w-[100%] max-w-[800px] mb-10 ${firstMessage ? '' : 'flex-out'}`}>
               <ChatHeader className={`${firstMessage ? 'chat-header-in' : 'chat-header-out'}`}/>
             </div>
             :
-            <div className={`flex flex-out gap-4 w-[40%] justify-start overflow-auto flex-col-reverse mt-6
+            <div className={`flex flex-out gap-4 w-[40%] max-w-[500px] min-w-[300px] justify-start overflow-auto flex-col-reverse mt-6
                             [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%)]
                             [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_20%)]`}>
               {waitingResponse && 
@@ -128,9 +128,9 @@ export default function Chat() {
             </div>
           }
                 
-          <form className={`chat-box-in flex w-[40%] h-22 items-start relative rounded-xl bg-[#1c2b2f] border-1 border-gray-600`}>
-            <textarea id="name"  placeholder="Ask about anything you want!"
-                  className="w-[90%] text-md focus:outline-none h-full resize-none p-3"
+          <form className={`chat-box-in flex w-[40%] max-w-[500px] min-w-[300px] h-22 items-start relative rounded-xl bg-[#1c2b2fa0] border-1 border-gray-600`}>
+            <textarea id="name"  placeholder="Any doubts or questions? Ask away!"
+                  className="w-[90%] text-[15px] focus:outline-none h-full resize-none p-3 pl-4 placeholder:text-gray-450"
                   value={currentMessage}
                   onChange={(e) => setCurrentMessage(e.target.value)}
                   onKeyDown={handleKeyDown}/>
