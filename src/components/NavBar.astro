@@ -1,5 +1,6 @@
 ---
 import ContactCard from "./ContactCard.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <nav class="sticky top-0 flex items-center justify-between px-10 py-3 fade-in-tb w-full bg-[#001c1b] text-white md:bg-transparent md:pt-5 z-[1000] md:absolute">
@@ -42,6 +43,7 @@ import ContactCard from "./ContactCard.astro";
     <a href="/" class="block py-2 bg-gray-200 text-black px-3 rounded-full">Contact Me</a>
   </div>
 
+  <ThemeToggle/>
 </nav>
 
 <script>

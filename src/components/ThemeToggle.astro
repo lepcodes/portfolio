@@ -1,0 +1,45 @@
+---
+import MoonIcon from "../icons/MoonIcon.astro";
+import SunIcon from "../icons/SunIcon.astro";
+---
+
+<!-- <button id="theme-toggle" class="rounded-full p-1 hover:bg-teal-700 hover:cursor-pointer transition-all duration-100">
+  <div id="moon-icon">
+    <MoonIcon class="h-8 w-8 text-white"/>
+  </div>
+  <div id="sun-icon" class="hidden">
+    <SunIcon class="h-8 w-8 text-white"/>
+  </div>
+</button> -->
+
+<button id="theme-toggle" class="relative flex items-center gap-2 rounded-full py-1 px-1 text-sm bg-white font-bold text-black hover:cursor-pointer transition-all duration-500">
+  <SunIcon id="sun-icon" class="h-6 w-6 text-white"/>
+  <MoonIcon id="moon-icon" class="h-6 w-6 text-black"/>
+  <div id="slider" class="absolute left-0 h-7 w-7 rounded-full bg-black transition-all duration-500 translate-x-1"/>
+</button>
+
+<script is:inline>
+  console.log('Hello World');
+  const themeToggle = document.getElementById('theme-toggle');
+  const moonIcon = document.getElementById('moon-icon');
+  const sunIcon = document.getElementById('sun-icon');
+  const slider = document.getElementById('slider');
+
+  themeToggle?.addEventListener('click', () => {
+    themeToggle.classList.toggle('bg-white');
+    themeToggle.classList.toggle('bg-black');
+
+    // moonIcon.classList.toggle('text-black');
+    // moonIcon.classList.toggle('text-white');
+    // sunIcon.classList.toggle('text-black');
+    // sunIcon.classList.toggle('text-white');
+
+    slider.classList.toggle('bg-black');
+    slider.classList.toggle('bg-white');
+    
+    const moveDistance = themeToggle.offsetWidth - slider.offsetWidth - 8;
+    slider.style.transform = slider.style.transform === `translateX(${moveDistance}px)` 
+      ? 'translateX(0px)'
+      : `translateX(${moveDistance}px)`;
+  });
+</script>
