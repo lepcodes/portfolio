@@ -77,7 +77,7 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
         if (lastMouseEvent) {
           const e = JSON.parse(lastMouseEvent);
           const yPos = e.clientY + window.scrollY;
-          body.style.background = `radial-gradient(circle at ${e.clientX}px ${yPos}px, #003631 0%, rgba(0,0,0,1) 500px)`;
+          body.style.background = `radial-gradient(circle at ${e.clientX}px ${yPos}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`;
         }
       }
     });
@@ -85,7 +85,7 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
     document.addEventListener('mousemove', (e) => {
       console.log(window.scrollY);
       if (body) {
-        body.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY + window.scrollY}px, #003634 0%, rgba(0,0,0,1) 500px)`
+        body.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY + window.scrollY}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`
       }
     });
     document.addEventListener('mousemove', (e) => {
