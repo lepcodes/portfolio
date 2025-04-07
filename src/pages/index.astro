@@ -34,7 +34,15 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
 </Layout>
 
 <script>
-  const bgColor = '#002025';
+  const colorBgBody = (xPos:number, yPos:number) => {
+    if (document.documentElement.classList.contains('dark')) {
+      return `radial-gradient(circle at ${xPos}px ${yPos}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`;
+    }
+    else {
+      return `radial-gradient(circle at ${xPos}px ${yPos}px, rgb(184, 255, 255) 0%, rgba(255, 255, 255, 1) 800px)`;
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     const sections = document.querySelectorAll('section');
@@ -77,7 +85,7 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
         if (lastMouseEvent) {
           const e = JSON.parse(lastMouseEvent);
           const yPos = e.clientY + window.scrollY;
-          body.style.background = `radial-gradient(circle at ${e.clientX}px ${yPos}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`;
+          body.style.background = colorBgBody(e.clientX, yPos);
         }
       }
     });
@@ -85,7 +93,7 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
     document.addEventListener('mousemove', (e) => {
       console.log(window.scrollY);
       if (body) {
-        body.style.background = `radial-gradient(circle at ${e.clientX}px ${e.clientY + window.scrollY}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`
+        body.style.background = colorBgBody(e.clientX, e.clientY+window.scrollY);
       }
     });
     document.addEventListener('mousemove', (e) => {
