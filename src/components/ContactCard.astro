@@ -32,13 +32,13 @@ const contacts = [
     </div>
   </button>
 
-  <div id="pop-over" class="flex flex-col absolute top-[90%] left-10 items-center gap-4 border border-gray-400 dark:border-gray-700 shadow-lg dark:shadow-black rounded-lg py-4 px-8 bg-white dark:bg-[#18262aad] overflow-hidden pop-over-out">
+  <div id="pop-over" class="flex flex-col absolute top-full left-0 md:top-[90%] md:left-10 h-screen md:h-fit items-center gap-4 border border-gray-400 dark:border-gray-700 shadow-lg dark:shadow-black rounded-lg py-4 px-8 bg-white dark:bg-teal-950 md:dark:bg-[#18262aad] overflow-hidden pop-over-out">
     <div class="flex flex-col items-center gap-2 m-2 mt-4 ">
       <img src="/src/assets/ProfilePicture.png" alt="Profile" class="rounded-full self-center w-32 h-32 border-2"/>
       <h1 class="text-xl font-extrabold dark:text-gray-200 mt-1">Luis Preciado</h1>
       <p class="text-sm dark:text-gray-400">AI and Robotics Engineer</p>
     </div>
-    <div class="grid grid-cols-2 gap-y-4 gap-x-3 text-sm w-fit">
+    <div class="flex flex-col md:grid md:grid-cols-2 gap-y-4 gap-x-3 text-sm w-fit">
       {contacts.map((contact) => (
         <div class="flex items-center h-8 border border-gray-400 rounded-lg overflow-hidden">
           <a 

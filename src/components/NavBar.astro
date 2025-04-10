@@ -35,15 +35,18 @@ import ThemeToggle from "./ThemeToggle.astro";
   </button>
 
   <!-- Mobile Navbar -->
-  <div id="mobile-menu" class="absolute top-full right-0 w-screen h-screen p-10 bg-[#001c1b] text-white hidden flex-col items-center gap-4 py-5 shadow-lg">
-    <a href="#About" class="block py-2">About</a>
-    <a href="#Experience" class="block py-2">Experience</a>
-    <a href="#Projects" class="block py-2">Projects</a>
-    <a href="#Education" class="block py-2">Education</a>
-    <a href="/" class="block py-2 bg-gray-200 text-black px-3 rounded-full">Contact Me</a>
+  <div id="mobile-menu" class="absolute hidden top-full right-0 w-screen h-screen p-10 bg-white dark:bg-[#001c1b] dark:text-white py-5 shadow-lg fade-out-nav">
+    <div class="flex flex-col items-center gap-2 w-full">
+      <a href="#About" class="w-fit py-2">About</a>
+      <a href="#Experience" class="block py-2">Experience</a>
+      <a href=" #Projects" class="block py-2">Projects</a>
+      <a href="#Education" class="block py-2">Education</a>
+      <a href="/" class="block py-2 bg-black text-white dark:bg-gray-200 dark:text-black px-3 rounded-full">Contact Me</a>
+      <ThemeToggle class="mt-5"/>
+    </div>
   </div>
 
-  <ThemeToggle/>
+  <ThemeToggle class="hidden md:flex"/>
 </nav>
 
 <script>
@@ -51,10 +54,13 @@ import ThemeToggle from "./ThemeToggle.astro";
   const mobileMenu = document.getElementById('mobile-menu');
 
   menuToggle?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+    mobileMenu?.classList.remove('hidden');
+    mobileMenu?.classList.toggle('fade-in-nav');
+    mobileMenu?.classList.toggle('fade-out-nav');
   });
   mobileMenu?.addEventListener('click', (e) => {
-    mobileMenu?.classList.toggle('hidden');
+    mobileMenu?.classList.toggle('fade-in-nav');
+    mobileMenu?.classList.toggle('fade-out-nav');
   });
 
   

@@ -188,7 +188,7 @@ body {
   100% {
     transform: translateY(0);
     filter: blur(0);
-    max-height: 500px;
+    max-height: 100vh;
     opacity: 1;
   }
 }
@@ -199,7 +199,7 @@ body {
 @keyframes pop-over-out {
   0% {
     transform: translateY(0);
-    max-height: 500px;
+    max-height: 100vh;
     opacity: 1;
   }
   100% {
@@ -228,4 +228,30 @@ body {
   100% {
     box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); /* fade to 0 either way */
   }
+}
+
+/* Animation for the NavBar Elements */
+@keyframes fade-in-nav {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.fade-in-nav {
+  animation: fade-in-nav 0.5s ease-in-out forwards;
+}
+
+@keyframes fade-out-nav {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.fade-out-nav {
+  animation: fade-out-nav 0.5s ease-in-out forwards;
 }
