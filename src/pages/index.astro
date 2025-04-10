@@ -14,11 +14,11 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
   <NavBar />
   <div class="flex flex-col h-[calc(100vh-4rem)] gap-8 md:pt-18 md:h-screen">
     <Chat client:load/>
-    <a class="fade-in-bounce flex flex-col justify-end items-center md:text-gray-500 text-sm font-bold hover:text-white" 
+    <a class="fade-in-bounce flex flex-col justify-end items-center md:text-gray-500 text-sm font-bold hover:text-gray-400 dark:hover:text-white" 
       href="#About"
       id="Explore">
       Explore Portfolio
-      <ChevronIcon className='h-6 w-6 text-white'/>
+      <ChevronIcon className='h-6 w-6 dark:text-white'/>
     </a>
   </div>
   
@@ -34,39 +34,17 @@ import ChevronIcon from '../icons/ChevronIcon.astro';
 </Layout>
 
 <script>
-  const colorBgBody = (xPos:number, yPos:number) => {
-    if (document.documentElement.classList.contains('dark')) {
-      return `radial-gradient(circle at ${xPos}px ${yPos}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`;
-    }
-    else {
-      return `radial-gradient(circle at ${xPos}px ${yPos}px, rgb(184, 255, 255) 0%, rgba(255, 255, 255, 1) 800px)`;
-    }
-  }
-
   document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('header');
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
-    const explore = document.querySelector('#Explore');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          console.log(entry.target.id);
-          navLinks.forEach((link) => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
-          });
-        }
-      });
-    },
-    {
-      threshold: 0.1
-    });
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+    const colorBgBody = (xPos:number, yPos:number) => {
+      if (document.documentElement.classList.contains('dark')) {
+        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`;
+      }
+      else {
+        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgb(184, 255, 255) 0%, rgba(255, 255, 255, 1) 80px)`;
+      }
+    }
     
+    const explore = document.querySelector('#Explore');
     const body = document.querySelector('body');
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;

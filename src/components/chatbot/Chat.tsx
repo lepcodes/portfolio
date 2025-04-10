@@ -128,9 +128,9 @@ export default function Chat() {
             </div>
           }
                 
-          <form className={`chat-box-in flex w-[40%] max-w-[500px] min-w-[300px] h-22 items-start relative rounded-xl bg-[#1c2b2fa0] border-1 border-gray-600`}>
+          <form className={`chat-box-in flex w-[40%] max-w-[500px] min-w-[300px] h-22 items-start relative rounded-xl bg-[#ebebeb70] dark:bg-[#1c2b2fa0] border border-gray-600`}>
             <textarea id="name"  placeholder="Any doubts or questions? Ask away!"
-                  className="w-[90%] text-[15px] focus:outline-none h-full resize-none p-3 pl-4 placeholder:text-gray-450"
+                  className="w-[90%] text-[15px] focus:outline-none h-full resize-none p-3 pl-4 dark:text-gray-200 placeholder:text-gray-450 dark:placeholder:text-gray-400"
                   value={currentMessage}
                   onChange={(e) => setCurrentMessage(e.target.value)}
                   onKeyDown={handleKeyDown}/>
@@ -140,7 +140,7 @@ export default function Chat() {
                     onClick={handleSendMessage}
                     disabled={currentMessage.length === 0}>
               <SendIcon className={`h-6 w-6 
-                ${currentMessage.length > 0 ? 'text-gray-100  stroke-2' : 'text-gray-500 stroke-1'}`}/>
+                ${currentMessage.length > 0 ? 'text-gray-700 dark:text-gray-100 stroke-2' : 'text-gray-500 stroke-1'}`}/>
             </button>
           </form>
         </div>

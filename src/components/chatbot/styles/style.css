@@ -3,6 +3,17 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer components {
+  @theme {
+    --color-1: #b5e9db;
+    --color-2: #87cbc9;
+    --color-2-5: #24bab5;
+    --color-3: #177774;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent 
+    bg-[linear-gradient(45deg,var(--color-2-5),var(--color-3))]
+    dark:bg-[linear-gradient(45deg,var(--color-1),var(--color-2),var(--color-3))];
+  }
 
   @keyframes fade-out2 {
     from {

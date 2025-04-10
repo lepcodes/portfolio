@@ -3,14 +3,14 @@ import ContactCard from "./ContactCard.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<nav class="sticky top-0 flex items-center justify-between px-10 py-3 fade-in-tb w-full bg-[#001c1b] text-white md:bg-transparent md:pt-5 z-[1000] md:absolute">
+<nav class="sticky top-0 flex items-center justify-between px-10 py-3 fade-in-tb w-full bg-[#001c1b] md:bg-transparent dark:text-white text-gray-800 md:pt-5 z-[1000] md:absolute">
 
   <ContactCard/>
 
   <!-- Desktop Navbar -->
   <div id="desktop-menu" class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 scale-up-hor-right mt-2.5">
     <ul
-      class="flex gap-10 rounded-lg bg-[#33333314] px-6 py-2 text-xs items-center justify-center shadow-[0px_0px_4px_rgba(200,200,200,0.7)]"
+      class="flex gap-10 rounded-lg bg-[#33333314] px-6 py-2 text-xs items-center justify-center shadow-[0px_0px_4px_rgba(50,50,50,0.5)] dark:shadow-[0px_0px_4px_rgba(200,200,200,0.7)]"
     >
       <li class="slide-tl-1 hover:scale-105 transition-all duration-100">
         <a href="#About" class="py-2 hover:[text-shadow:0px_0px_10px_#31b9b4] hover:text-[#31b9b4] transition-all duration-100">About</a>

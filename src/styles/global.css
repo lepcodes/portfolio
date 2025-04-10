@@ -21,55 +21,6 @@ body {
 }
 
 @layer components {
-  nav > a {
-    position: relative;
-    padding-left: 50px;
-    transition: padding-left 0.1s ease-in-out;
-    color: gray;
-    padding-top: 0.8rem;  
-    padding-bottom: 0.8rem;
-  }
-  
-  nav > a:hover {
-    padding-left: 90px;
-    @apply text-white;
-  }
-
-  nav > a.active {
-    padding-left: 90px;
-    @apply text-[#31b9b4];
-  }
-
-  nav > a::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 40px;
-    height: 2px;
-    top: 50%;
-    left: 0;
-    background-color: gray;
-    transition: width 0.1s ease-in-out;
-  }
-  
-  nav > a:hover::before {
-    width: 80px;
-    @apply bg-white;
-  }
-
-  nav > a.active::before {
-    width: 80px;
-    height: 2px;
-    @apply bg-[#31b9b4];
-  }
-
-  .text-gradient {
-    color: #178582; 
-    background-image: linear-gradient(45deg, #b5e9db, #87cbc9, #177774 ); 
-    background-clip: text; 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-  }
   
   /* Animation for the Sections */
   @keyframes fade-in-rl {
@@ -262,14 +213,19 @@ body {
 }
 
 .pulse {
+  --pulse-color: rgba(0, 0, 0, 0.4); /* overrides in dark mode */
   animation: pulse-animation 1.5s infinite;
+}
+
+.dark .pulse {
+  --pulse-color: rgba(255, 255, 255, 0.4); /* default for light mode */
 }
 
 @keyframes pulse-animation {
   0% {
-    box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 0px var(--pulse-color);
   }
   100% {
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); /* fade to 0 either way */
   }
 }
