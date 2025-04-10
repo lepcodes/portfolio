@@ -1,0 +1,45 @@
+---
+import MoonIcon from "../icons/MoonIcon.astro";
+import SunIcon from "../icons/SunIcon.astro";
+
+const { class: className = "" } = Astro.props;
+---
+
+<button id="theme-toggle" class={`relative flex items-center gap-2 rounded-full py-1 px-1 text-sm bg-white font-bold text-black hover:cursor-pointer transition-all duration-500 ${className}`}>
+  <SunIcon id="sun-icon" class="h-6 w-6 text-white"/>
+  <MoonIcon id="moon-icon" class="h-6 w-6 text-black"/>
+  <div id="slider" class="absolute left-0 h-6.5 w-6.5 rounded-full bg-black transition-all duration-500 translate-x-1"/>
+</button>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const moonIcon = document.getElementById('moon-icon');
+  const sunIcon = document.getElementById('sun-icon');
+  const slider = document.getElementById('slider');
+
+  themeToggle?.addEventListener('click', () => {
+    themeToggle.classList.toggle('bg-white');
+    themeToggle.classList.toggle('bg-black');
+    if (slider) {
+      slider.classList.toggle('bg-black');
+      slider.classList.toggle('bg-white');
+      
+      const moveDistance = themeToggle.offsetWidth - slider.offsetWidth - 8;
+      slider.style.transform = slider.style.transform === `translateX(${moveDistance}px)` 
+        ? 'translateX(0px)'
+        : `translateX(${moveDistance}px)`;
+    }
+      
+    document.documentElement.classList.toggle('dark');
+
+    const colorBgBody = (xPos:number, yPos:number) => {
+      if (document.documentElement.classList.contains('dark')) {
+        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`;
+      }
+      else {
+        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgb(184, 255, 255) 0%, rgba(255, 255, 255, 1) 80px)`;
+      }
+    }
+    document.body.style.background = colorBgBody(themeToggle.offsetLeft, themeToggle.offsetTop);
+  });
+</script>

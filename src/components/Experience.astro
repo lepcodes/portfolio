@@ -25,10 +25,10 @@ const experience: Experience[] = [
 
 ---
 <section id="Experience" class="flex flex-col gap-4">
-  <h1 class="text-3xl font-bold mb-6">
+  <h1 class="text-3xl font-bold mb-6 dark:text-white">
     Experience
   </h1>
-  <ol class="flex flex-col gap-8">
+  <ol class="flex flex-col gap-8 dark:text-gray-200">
     {experience.map((experience) => {
       return <ExperienceItem experience={experience} />
     })}

@@ -1,72 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
-@plugin '@tailwindcss/typography';
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-primary: 'Inter', sans-serif;
+  --color-bg-body: radial-gradient(circle at 50% 50vh, rgb(184, 255, 255) 0%, rgba(255, 255, 255, 1) 1000px);
+}
+
+.dark {
+  --color-bg-body: radial-gradient(circle at 50% 50vh, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 1000px);
 }
 
 html {
   scroll-padding-top: 6rem;
-  scroll-behavior:  smooth;
 }
 
 body {
   overflow-x: hidden;
-  background: radial-gradient(circle at 50% 50vh, rgba(0,32,37,255) 0%, rgba(0,0,0,1) 1000px);
+  background: var(--color-bg-body);
 }
 
 @layer components {
-  nav > a {
-    position: relative;
-    padding-left: 50px;
-    transition: padding-left 0.1s ease-in-out;
-    color: gray;
-    padding-top: 0.8rem;  
-    padding-bottom: 0.8rem;
-  }
-  
-  nav > a:hover {
-    padding-left: 90px;
-    @apply text-white;
-  }
-
-  nav > a.active {
-    padding-left: 90px;
-    @apply text-[#31b9b4];
-  }
-
-  nav > a::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 40px;
-    height: 2px;
-    top: 50%;
-    left: 0;
-    background-color: gray;
-    transition: width 0.1s ease-in-out;
-  }
-  
-  nav > a:hover::before {
-    width: 80px;
-    @apply bg-white;
-  }
-
-  nav > a.active::before {
-    width: 80px;
-    height: 2px;
-    @apply bg-[#31b9b4];
-  }
-
-  .text-gradient {
-    color: #178582; 
-    background-image: linear-gradient(45deg, #b5e9db, #87cbc9, #177774 ); 
-    background-clip: text; 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-  }
   
   /* Animation for the Sections */
   @keyframes fade-in-rl {
@@ -222,4 +176,82 @@ body {
   .slide-tl-4 {
     animation: slide-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 1.3s;
   } 
+}
+
+/* Animation for the PopOver */
+@keyframes pop-over-in {
+  0% {
+    transform: translateY(-100px);
+    max-height: 0px;
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
+    max-height: 100vh;
+    opacity: 1;
+  }
+}
+.pop-over-in {
+  animation: pop-over-in 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+}
+
+@keyframes pop-over-out {
+  0% {
+    transform: translateY(0);
+    max-height: 100vh;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    max-height: 0px;
+    opacity: 0;
+  }
+}
+.pop-over-out {
+  animation: pop-over-out 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+}
+
+.pulse {
+  --pulse-color: rgba(0, 0, 0, 0.4); /* overrides in dark mode */
+  animation: pulse-animation 1.5s infinite;
+}
+
+.dark .pulse {
+  --pulse-color: rgba(255, 255, 255, 0.4); /* default for light mode */
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px var(--pulse-color);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); /* fade to 0 either way */
+  }
+}
+
+/* Animation for the NavBar Elements */
+@keyframes fade-in-nav {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.fade-in-nav {
+  animation: fade-in-nav 0.5s ease-in-out forwards;
+}
+
+@keyframes fade-out-nav {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.fade-out-nav {
+  animation: fade-out-nav 0.5s ease-in-out forwards;
 }

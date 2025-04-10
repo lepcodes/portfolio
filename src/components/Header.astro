@@ -1,32 +1,76 @@
 ---
 import Network from './Network.astro';
+
+const sections = [
+    { href: '#About', title: 'ABOUT' },
+    { href: '#Experience', title: 'EXPERIENCE' },
+    { href: '#Projects', title: 'PROJECTS' },
+    { href: '#Education', title: 'EDUCATION' },
+]
 --- 
 <div class="hidden md:flex h-screen sticky top-0 f w-[40%] max-w-[400px]">
     <header class="flex flex-col justify-between">
         <div class="flex flex-col items-start gap-4">
-            <h1 class="text-5xl font-extrabold tracking-wide mt-24 text-gray-200">
+            <h1 class="text-5xl font-extrabold tracking-wide mt-24 text-black dark:text-gray-200">
                 Luis Preciado
             </h1>
-            <h2 class="text-2xl font-bold text-gray-200">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">
                 AI and Robotics Engineer
             </h2>
-            <h3 class="text-md text-gray-400">
+            <h3 class="text-md text-gray-700 dark:text-gray-400">
                 Magna qui irure laborum eiusmod amet laborum minim ex qui adipisicing proident duis.
             </h3>
-            <div class="border-2 flex items-center gap-2 rounded-full px-2 py-1 border-gray-500 text-gray-200 text-xs tracking-wider hover:text-green-300 hover:border-green-600">
+            <div class="border-2 flex items-center gap-2 rounded-full px-2 py-1 text-xs tracking-wider text-green-600 border-green-400 dark:text-green-300 dark:border-green-600"> 
                 <span class="w-2 h-2 bg-green-500 rounded-full"></span>
                 Open to Work
             </div>
         </div>
         
-        <nav class="flex flex-col w-fit text-xs font-bold tracking-[0.25em]">
-            <a href="#About" class="">ABOUT</a>
-            <a href="#Experience" class="">EXPERIENCE</a>
-            <a href="#Projects" class="">PROJECTS</a>
-            <a href="#Education" class="">EDUCATION</a>
-            <!-- <a href="#Contact" class="">CONTACT</a> -->
+        <nav class="flex flex-col w-fit text-xs font-bold tracking-[0.25em] dark:text-gray-900">
+            {sections.map((section) => (
+                <a 
+                class="flex items-center gap-2 group text-gray-400 dark:text-gray-500 hover:text-black dark:hover:text-white"
+                href={section.href} 
+                >
+                    <span class="h-[2px] w-12 group-hover:w-24 bg-gray-400 dark:bg-gray-500 group-hover:bg-black dark:group-hover:bg-white transition-all duration-100"></span>
+                    <h2 class="py-2.5 flex-1">
+                        {section.title}
+                    </h2>
+                </a>
+            ))}
         </nav>
 
         <Network/>
     </header>
 </div>
+
+<script>
+    const header = document.querySelector('header');
+    const sections = document.querySelectorAll('section');
+    const navLinks = header?.querySelectorAll('nav a');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log(entry.target.id);
+          navLinks?.forEach((link) => {
+            link.classList.toggle('text-teal-600', link.getAttribute('href') === '#' + entry.target.id);
+            link.classList.toggle('dark:text-teal-500', link.getAttribute('href') === '#' + entry.target.id);
+            const span = link.querySelector('span');
+            if (span) {
+              span.classList.toggle('w-24', link.getAttribute('href') === '#' + entry.target.id);
+              span.classList.toggle('bg-teal-600', link.getAttribute('href') === '#' + entry.target.id);
+              span.classList.toggle('dark:bg-teal-500', link.getAttribute('href') === '#' + entry.target.id);
+            }
+          });
+        }
+      });
+    },
+    {
+      threshold: 0.1
+    });
+    
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+</script>
