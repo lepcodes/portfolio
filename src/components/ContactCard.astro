@@ -23,16 +23,16 @@ const contacts = [
 ];
 ---
 <div>
-  <button id="pop-over-toggle" class="flex items-center rounded-full pulse">
-    <div id="profile-picture" class="text-md top-0 m-0 border dark:border-white border-gray-700 rounded-full overflow-hidden hover:cursor-pointer hover:border-teal-700 hover:scale-120 transition-all duration-200">
-      <img src="/src/assets/ProfilePicture.png" alt="Logo" class="h-8 w-8 md:h-10 md:w-10 object-cover  hover:scale-107 transition-all duration-200"/>
+  <button id="pop-over-toggle" class="h-10 w-10 flex items-center justify-center hover:scale-120 transition-all duration-200">
+    <div id="profile-picture" class="m-0 border overflow-hidden pulse dark:border-white border-gray-700 rounded-full hover:cursor-pointer hover:border-teal-700 ">
+      <img src="/src/assets/ProfilePicture.png" alt="Logo" class="object-cover hover:scale-107 transition-all duration-200"/>
     </div>
-    <div id="close-button" class="hidden rounded-full overflow-hidden p-1">
+    <div id="close-button" class="hidden rounded-full overflow-hidden">
       <XIcon class="h-8 w-8 weight-bold text-teal-600 dark:text-teal-600 hover:cursor-pointer dark:hover:text-gray-200 hover:text-gray-600"/>
     </div>
   </button>
 
-  <div id="pop-over" class="flex flex-col absolute top-full left-0 md:top-[90%] md:left-10 h-screen md:h-fit items-center gap-4 border border-gray-400 dark:border-gray-700 shadow-lg dark:shadow-black rounded-lg py-4 px-8 bg-white dark:bg-teal-950 md:dark:bg-[#18262aad] overflow-hidden pop-over-out">
+  <div id="pop-over" class="hidden flex-col absolute top-full left-0 md:top-[90%] md:left-10 h-screen md:h-fit items-center gap-4 border border-gray-400 dark:border-gray-700 shadow-lg dark:shadow-black md:rounded-lg py-4 px-8 bg-white dark:bg-teal-950 md:dark:bg-[#18262aad] overflow-hidden animate-pop-over-out-mobile md:animate-pop-over-out-desktop">  
     <div class="flex flex-col items-center gap-2 m-2 mt-4 ">
       <img src="/src/assets/ProfilePicture.png" alt="Profile" class="rounded-full self-center w-32 h-32 border-2"/>
       <h1 class="text-xl font-extrabold dark:text-gray-200 mt-1">Luis Preciado</h1>
@@ -63,12 +63,16 @@ const contacts = [
   const popOverToggle = document.getElementById('pop-over-toggle');
   const profilePicture = document.getElementById('profile-picture');
   const closeButton = document.getElementById('close-button');
-
   const popOver = document.getElementById('pop-over');
+
   popOverToggle?.addEventListener('click', () => {
-    popOver?.classList.toggle('pop-over-in');
-    popOver?.classList.toggle('pop-over-out');
-    popOverToggle?.classList.toggle('pulse');
+    popOver?.classList.remove('hidden');
+    popOver?.classList.add('flex');
+    popOver?.classList.toggle('md:animate-pop-over-in-desktop');
+    popOver?.classList.toggle('md:animate-pop-over-out-desktop');
+    popOver?.classList.toggle('animate-pop-over-in-mobile');
+    popOver?.classList.toggle('animate-pop-over-out-mobile');
+    profilePicture?.classList.toggle('pulse');
     profilePicture?.classList.toggle('hidden');
     closeButton?.classList.toggle('hidden');
   });
