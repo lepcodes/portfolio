@@ -4,7 +4,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 import ThemeToggleMobile from "./ThemeToggleMobile.astro";
 ---
 
-<nav class="sticky top-0 flex items-center justify-between px-10 py-3 fade-in-tb w-full bg-[#001c1b] md:bg-transparent dark:text-white text-gray-800 md:pt-5 z-[1000] md:absolute">
+<nav class="sticky top-0 flex items-center justify-between px-10 py-3 w-screen bg-teal-600 dark:bg-[#001c1b] md:dark:bg-transparent md:bg-transparent dark:text-white text-gray-800 md:pt-5 z-[1000] md:absolute">
 
   <ContactCard/>
 
@@ -29,21 +29,21 @@ import ThemeToggleMobile from "./ThemeToggleMobile.astro";
   </div>
 
   <!-- Menu Toggle Button -->
-  <button id="menu-toggle" class="md:hidden focus:outline-none text-gray-300 hover:cursor-pointer hover:text-white">
+  <button id="menu-toggle" class="md:hidden focus:outline-none text-white dark:text-gray-300 hover:cursor-pointer hover:text-white">
     <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
       <path d="M4 6h16M4 12h16M4 18h16"></path>
     </svg>
   </button>
 
   <!-- Mobile Navbar -->
-  <div id="mobile-menu" class="absolute hidden top-full right-0 w-screen h-screen p-10 bg-white dark:bg-[#001c1b] dark:text-white py-5 shadow-lg fade-out-nav">
-    <div class="flex flex-col items-center gap-2 w-full">
-      <a href="#About" class="w-fit py-2">About</a>
-      <a href="#Experience" class="block py-2">Experience</a>
-      <a href=" #Projects" class="block py-2">Projects</a>
-      <a href="#Education" class="block py-2">Education</a>
-      <a href="/" class="block py-2 bg-black text-white dark:bg-gray-200 dark:text-black px-3 rounded-full">Contact Me</a>
-      <ThemeToggleMobile/>
+  <div id="mobile-menu" class="fixed opacity-0 top-14 right-0 w-screen h-screen p-10 bg-white dark:bg-[#001c1b] dark:text-white py-5 shadow-lg fade-out-nav">
+    <div class="flex flex-col items-center gap-5 w-full">
+      <a href="#About" class="w-fit">About</a>
+      <a href="#Experience" class="block">Experience</a>
+      <a href=" #Projects" class="block">Projects</a>
+      <a href="#Education" class="block">Education</a>
+      <a href="/" class="block bg-black text-white dark:bg-gray-200 dark:text-black px-3 py-1 rounded-full">Contact Me</a>
+      <ThemeToggleMobile class="mt-6"/>
     </div>
   </div>
 
@@ -55,9 +55,9 @@ import ThemeToggleMobile from "./ThemeToggleMobile.astro";
   const mobileMenu = document.getElementById('mobile-menu');
 
   menuToggle?.addEventListener('click', () => {
-    mobileMenu?.classList.remove('hidden');
-    mobileMenu?.classList.toggle('fade-in-nav');
+    mobileMenu?.classList.remove('opacity-0');
     mobileMenu?.classList.toggle('fade-out-nav');
+    mobileMenu?.classList.toggle('fade-in-nav');
   });
   mobileMenu?.addEventListener('click', (e) => {
     mobileMenu?.classList.toggle('fade-in-nav');
