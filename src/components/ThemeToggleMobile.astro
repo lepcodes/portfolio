@@ -5,15 +5,15 @@ import SunIcon from "../icons/SunIcon.astro";
 const { class: className = "" } = Astro.props;
 ---
 
-<button id="theme-toggle" class={`relative flex items-center gap-2 rounded-full py-1 px-1 text-sm bg-white font-bold text-black hover:cursor-pointer transition-all duration-500 ${className}`}>
+<button id="theme-toggle-m" class={`relative flex items-center gap-2 rounded-full py-1 px-1 text-sm bg-white font-bold text-black hover:cursor-pointer transition-all duration-500 ${className}`}>
   <SunIcon id="sun-icon" class="h-6 w-6 text-white"/>
   <MoonIcon id="moon-icon" class="h-6 w-6 text-black"/>
-  <div id="slider" class="absolute left-0 h-6.5 w-6.5 rounded-full bg-black transition-all duration-500 translate-x-1"/>
+  <div id="slider-m" class="absolute left-0 h-6.5 w-6.5 rounded-full bg-black transition-all duration-500 translate-x-1"/>
 </button>
 
 <script>
-  const themeToggle = document.getElementById('theme-toggle');
-  const slider = document.getElementById('slider');
+  const themeToggle = document.getElementById('theme-toggle-m');
+  const slider = document.getElementById('slider-m');
 
   themeToggle?.addEventListener('click', () => {
     themeToggle.classList.toggle('bg-white');

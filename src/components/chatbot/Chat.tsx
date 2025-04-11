@@ -96,7 +96,7 @@ export default function Chat() {
   
   return (  
     <>
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto px-10">
         <div className={`h-full w-full relative flex flex-col gap-5 items-center justify-center`}>
           {
             messageHistory.length == 0

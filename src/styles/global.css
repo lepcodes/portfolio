@@ -5,6 +5,60 @@
 @theme {
   --font-primary: 'Inter', sans-serif;
   --color-bg-body: radial-gradient(circle at 50% 50vh, rgb(184, 255, 255) 0%, rgba(255, 255, 255, 1) 1000px);
+  --animate-fade-in-tb: fade-in-tb 0.6s ease-in-out forwards;
+  @keyframes fade-in-tb {
+    0% {
+      transform: translateY(-100px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  --animate-pop-over-in-desktop: pop-over-in-desktop 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  @keyframes pop-over-in-desktop {
+    0% {
+      transform: translateY(-100px);
+      max-height: 0px;
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      filter: blur(0);
+      max-height: 100vh;
+      opacity: 1;
+    }
+  }
+  --animate-pop-over-out-desktop: pop-over-out-desktop 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  @keyframes pop-over-out-desktop {
+    0% {
+      transform: translateY(0);
+      max-height: 100vh;
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px);
+      max-height: 0px;
+      opacity: 0;
+    }
+  }
+  --animate-pop-over-in-mobile: pop-over-in-mobile 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  @keyframes pop-over-in-mobile {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  --animate-pop-over-out-mobile: pop-over-out-mobile 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  @keyframes pop-over-out-mobile {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 }
 
 .dark {
@@ -126,20 +180,6 @@ body {
   }
 
   /* Animation for the NavBar Elements */
-  @keyframes fade-in-tb {
-    0% {
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0)
-    }
-  }
-  .fade-in-tb {
-    animation: fade-in-tb 1s ease-in-out forwards;
-  }
-
   @keyframes scale-up-hor-right {
     0% {
       transform: scaleX(0);
@@ -179,38 +219,10 @@ body {
 }
 
 /* Animation for the PopOver */
-@keyframes pop-over-in {
-  0% {
-    transform: translateY(-100px);
-    max-height: 0px;
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    filter: blur(0);
-    max-height: 100vh;
-    opacity: 1;
-  }
-}
-.pop-over-in {
-  animation: pop-over-in 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-}
 
-@keyframes pop-over-out {
-  0% {
-    transform: translateY(0);
-    max-height: 100vh;
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100px);
-    max-height: 0px;
-    opacity: 0;
-  }
-}
-.pop-over-out {
-  animation: pop-over-out 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-}
+
+
+
 
 .pulse {
   --pulse-color: rgba(0, 0, 0, 0.4); /* overrides in dark mode */
@@ -241,7 +253,7 @@ body {
 }
 
 .fade-in-nav {
-  animation: fade-in-nav 0.5s ease-in-out forwards;
+  animation: fade-in-nav 0.3s ease-in-out forwards;
 }
 
 @keyframes fade-out-nav {
@@ -253,5 +265,5 @@ body {
   }
 }
 .fade-out-nav {
-  animation: fade-out-nav 0.5s ease-in-out forwards;
+  animation: fade-out-nav 0.3s ease-in-out forwards;
 }
