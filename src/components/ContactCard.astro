@@ -27,7 +27,7 @@ const contacts = [
 <div>
   <button id="pop-over-toggle" class="h-10 w-10 flex items-center justify-center hover:scale-120 transition-all duration-200">
     <div id="profile-picture" class="m-0 border overflow-hidden pulse dark:border-white border-gray-700 rounded-full hover:cursor-pointer hover:border-teal-700 ">
-      <img src="../../src/assets/ProfilePicture.webp" alt="Picture" class="object-cover hover:scale-107 transition-all duration-200"/>
+      <Image src={ProfilePicture} alt="Picture" class="object-cover hover:scale-107 transition-all duration-200"/>
     </div>
     <div id="close-button" class="hidden rounded-full overflow-hidden">
       <XIcon class="h-8 w-8 weight-bold text-teal-600 dark:text-teal-600 hover:cursor-pointer dark:hover:text-gray-200 hover:text-gray-600"/>
@@ -36,7 +36,6 @@ const contacts = [
 
   <div id="pop-over" class="hidden flex-col absolute top-full left-0 md:top-[90%] md:left-10 h-screen md:h-fit items-center gap-4 border border-gray-400 dark:border-gray-700 shadow-lg dark:shadow-black md:rounded-lg py-4 px-8 bg-white dark:bg-teal-950 md:dark:bg-[#18262aad] overflow-hidden animate-pop-over-out-mobile md:animate-pop-over-out-desktop">  
     <div class="flex flex-col items-center gap-2 m-2 mt-4 ">
-      <img src="/src/assets/ProfilePicture.png" alt="Profile" class="rounded-full self-center w-32 h-32 border-2"/>
       <Image src={ProfilePicture} alt="Picture" width="128" height=128 class="object-cover rounded-full self-center border-2"/>
       <h1 class="text-xl font-extrabold dark:text-gray-200 mt-1">Luis Preciado</h1>
       <p class="text-sm dark:text-gray-400">AI and Robotics Engineer</p>
