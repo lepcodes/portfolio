@@ -1,55 +1,64 @@
 ---
-import Network from './Network.astro';
+import Network from "./Network.astro";
 
 const sections = [
-    { href: '#About', title: 'ABOUT' },
-    { href: '#Experience', title: 'EXPERIENCE' },
-    { href: '#Projects', title: 'PROJECTS' },
-    { href: '#Education', title: 'EDUCATION' },
-]
---- 
-<div class="hidden md:flex h-screen sticky top-0 f w-[40%] max-w-[400px]">
-    <header class="flex flex-col justify-between">
-        <div class="flex flex-col items-start gap-4">
-            <h1 class="text-5xl font-extrabold tracking-wide mt-24 text-black dark:text-gray-200">
-                Luis Preciado
-            </h1>
-            <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">
-                AI and Robotics Engineer
-            </h2>
-            <h3 class="text-md text-gray-700 dark:text-gray-400">
-                Magna qui irure laborum eiusmod amet laborum minim ex qui adipisicing proident duis.
-            </h3>
-            <div class="border-2 flex items-center gap-2 rounded-full px-2 py-1 text-xs tracking-wider text-green-600 border-green-400 dark:text-green-300 dark:border-green-600"> 
-                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                Open to Work
-            </div>
-        </div>
-        
-        <nav class="flex flex-col w-fit text-xs font-bold tracking-[0.25em] dark:text-gray-900">
-            {sections.map((section) => (
-                <a 
-                class="flex items-center gap-2 group text-gray-400 dark:text-gray-500 hover:text-black dark:hover:text-white"
-                href={section.href} 
-                >
-                    <span class="h-[2px] w-12 group-hover:w-24 bg-gray-400 dark:bg-gray-500 group-hover:bg-black dark:group-hover:bg-white transition-all duration-100"></span>
-                    <h2 class="py-2.5 flex-1">
-                        {section.title}
-                    </h2>
-                </a>
-            ))}
-        </nav>
+  { href: "#About", title: "ABOUT" },
+  { href: "#Experience", title: "EXPERIENCE" },
+  { href: "#Projects", title: "PROJECTS" },
+  { href: "#Education", title: "EDUCATION" },
+];
+---
 
-        <Network/>
-    </header>
+<div class="flex md:h-screen static md:sticky md:top-0 md:w-[40%] md:max-w-[400px] md:py-24">
+  <header class="flex flex-col gap-8 md:justify-between">
+    <div class="flex flex-col items-start gap-5 md:gap-4">
+      <h1
+        class="text-5xl font-extrabold tracking-wide text-black dark:text-gray-200"
+      >
+        Luis Preciado
+      </h1>
+      <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">
+        AI and Robotics Engineer
+      </h2>
+      <h3 class="text-md text-gray-700 dark:text-gray-400">
+        Magna qui irure laborum eiusmod amet laborum minim ex qui adipisicing
+        proident duis.
+      </h3>
+      <div
+        class="border-2 flex items-center gap-2 rounded-full px-2 py-1 text-xs tracking-wider text-green-600 border-green-400 dark:text-green-300 dark:border-green-600"
+      >
+        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+        Open to Work
+      </div>
+    </div>
+
+    <nav
+      class="hidden md:flex flex-col w-fit text-xs font-bold tracking-[0.25em] dark:text-gray-900"
+    >
+      {
+        sections.map((section) => (
+          <a
+            class="flex items-center gap-2 group text-gray-400 dark:text-gray-500 hover:text-black dark:hover:text-white"
+            href={section.href}
+          >
+            <span class="h-[2px] w-12 group-hover:w-24 bg-gray-400 dark:bg-gray-500 group-hover:bg-black dark:group-hover:bg-white transition-all duration-100" />
+            <h2 class="py-2.5 flex-1">{section.title}</h2>
+          </a>
+        ))
+      }
+    </nav>
+
+    <Network/>
+  </header>
 </div>
 
 <script>
-    const header = document.querySelector('header');
-    const sections = document.querySelectorAll('section');
-    const navLinks = header?.querySelectorAll('nav a');
-    
-    const observer = new IntersectionObserver((entries) => {
+  const header = document.querySelector("header");
+  const sections = document.querySelectorAll("section");
+  const navLinks = header?.querySelectorAll("nav a");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           console.log(entry.target.id);
@@ -67,10 +76,11 @@ const sections = [
       });
     },
     {
-      threshold: 0.1
-    });
-    
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+      threshold: 0.1,
+    }
+  );
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
 </script>
