@@ -1,4 +1,5 @@
 ---
+const { header } = Astro.props;
 import Network from './Network.astro';
 
 const sections = [
@@ -12,13 +13,13 @@ const sections = [
     <header class="flex flex-col justify-between">
         <div class="flex flex-col items-start gap-4">
             <h1 class="text-5xl font-extrabold tracking-wide mt-24 text-black dark:text-gray-200">
-                Luis Preciado
+              {header.name}
             </h1>
             <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">
-                AI and Robotics Engineer
+              {header.title}
             </h2>
             <h3 class="text-md text-gray-700 dark:text-gray-400">
-                Magna qui irure laborum eiusmod amet laborum minim ex qui adipisicing proident duis.
+              {header.description}
             </h3>
             <div class="border-2 flex items-center gap-2 rounded-full px-2 py-1 text-xs tracking-wider text-green-600 border-green-400 dark:text-green-300 dark:border-green-600"> 
                 <span class="w-2 h-2 bg-green-500 rounded-full"></span>

@@ -1,31 +1,15 @@
 ---
+import { ParseStatus } from "astro:schema";
 import GithubIcon from "../icons/GithubIcon.astro";
 import TechTag from "./TechTag.astro";
+import type { Project } from "./types/types";
 import type { TechnologyType } from "./types/tech_types";
 
-const projects = [
-  {
-    title: "Rachet Clank",
-    description: "Anim elit ipsum cupidatat exercitation eiusmod et. Ipsum anim ea occaecat non qui.",
-    image: "https://i.imgur.com/t6dHMnl.jpeg",
-    url: "https://www.playstation.com/es-mx/games/ratchet-and-clank/",
-    tech: ['PYTHON', 'JAVASCRIPT', 'HTML']
-  },
-  {
-    title: "Data Science",
-    description: "Anim elit ipsum cupidatat exercitation eiusmod et. Ipsum anim ea occaecat non qui.",
-    image: "https://i.imgur.com/vV2PVfl.png",
-    url: "https://www.masterdatascienceucm.com/que-es-data-science/",
-    tech: ['PYTHON', 'JAVASCRIPT', 'REACT']
-  },
-  {
-    title: "Other Project",
-    description: "Anim elit ipsum cupidatat exercitation eiusmod et. Ipsum anim ea occaecat non qui.",
-    image: "https://i.imgur.com/vV2PVfl.png",
-    url: "https://www.masterdatascienceucm.com/que-es-data-science/",
-    tech: ['JAVASCRIPT', 'CSS', 'FASTAPI']
-  }
-];
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
 
 ---
 

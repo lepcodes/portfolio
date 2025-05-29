@@ -2,27 +2,11 @@
 import type { Experience } from './types/types';
 import ExperienceItem from './ExperienceItem.astro';
 
-const experience: Experience[] = [
-  {
-    title: "AI and Robotics Engineer",
-    description: "Sint veniam magna in et ad aliqua proident est Lorem id eu sunt minim.",
-    startDate: "2023",
-    endDate: "2025",
-    company: "Google",
-    location: "San Francisco, CA",
-    url: "https://www.google.com"
-  },
-  {
-    title: "AI and Robotics Engineer",
-    description: "Sint veniam magna in et ad aliqua proident est Lorem id eu sunt minim.",
-    startDate: "2023",
-    endDate: "2025",
-    company: "Google",
-    location: "San Francisco, CA",
-    url: "https://www.google.com"
-  }
-];
+interface Props {
+  experience: Experience[];
+}
 
+const { experience } = Astro.props;
 ---
 <section id="Experience" class="flex flex-col gap-4">
   <h1 class="text-3xl font-bold mb-6 dark:text-white">

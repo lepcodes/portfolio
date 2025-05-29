@@ -4,15 +4,15 @@
 
 @layer components {
   @theme {
-    --color-1: #b5e9db;
-    --color-2: #87cbc9;
-    --color-2-5: #24bab5;
-    --color-3: #177774;
+    --clr-1: #b5e9db;
+    --clr-2: #87cbc9;
+    --clr-2-5: #24bab5;
+    --clr-3: #177774;
   }
   .text-gradient {
     @apply bg-clip-text text-transparent 
-    bg-[linear-gradient(45deg,var(--color-2-5),var(--color-3))]
-    dark:bg-[linear-gradient(45deg,var(--color-1),var(--color-2),var(--color-3))];
+    bg-[linear-gradient(45deg,var(--clr-2-5),var(--clr-3))]
+    dark:bg-[linear-gradient(45deg,var(--clr-1),var(--clr-2),var(--clr-3))];
   }
 
   @keyframes fade-out2 {

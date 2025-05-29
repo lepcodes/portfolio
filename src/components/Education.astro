@@ -4,27 +4,11 @@ import CalendarIcon from "../icons/CalendarIcon.astro";
 import CertificateIcon from "../icons/CertificateIcon.astro";
 import type { Education } from "./types/types";
 
-const education: Education[] = [
-  {
-    title: "Master in Artificial Intelligence",
-    school: "University of California",
-    startDate: "2024",
-    endDate: "Present",
-    location: "San Francisco, CA",
-    description: "Proficiency in Python, JavaScript, HTML, CSS, and React",
-    url: "https://www.google.com"
-  },
-  {
-    title: "Bachelor in Robotics Engineering",
-    school: "University of California",
-    startDate: "2022",
-    endDate: "2024",
-    location: "San Francisco, CA",
-    description: "Research in Robotics, Computer Vision, and Machine Learning",
-    url: "https://www.google.com"
-  },
-];
+interface Props {
+  education: Education[];
+}
 
+const { education } = Astro.props;
 ---
 
 <section id="Education" class="flex flex-col gap-4 animate-fadeIn mb-20">
