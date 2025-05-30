@@ -1,5 +1,4 @@
 ---
-import { ParseStatus } from "astro:schema";
 import GithubIcon from "../icons/GithubIcon.astro";
 import TechTag from "./TechTag.astro";
 import type { Project } from "./types/types";
@@ -14,13 +13,13 @@ const { projects } = Astro.props;
 ---
 
 <section id="Projects" class="flex flex-col gap-4">
-  <h1 class="text-3xl font-bold mb-6 dark:text-white">
+  <h1 class="text-3xl font-normal mb-6 dark:text-white">
     Projects
   </h1>
 
   <div class="flex flex-col gap-8 md:pl-4">
     {projects.map((project) => (
-      <article class="flex flex-col rounded-2xl border border-gray-300 dark:border-gray-700 md:w-[90%] group hover:blur-none hover:cursor-pointer hover:border-gray-400 hover:scale-102 shadow-sm hover:shadow-2xl dark:shadow-black transition-all duration-200"
+      <article class="flex flex-col rounded-2xl border border-gray-300 dark:border-gray-700 md:w-[90%] group hover:blur-none hover:cursor-pointer hover:scale-102 shadow-sm hover:shadow-2xl dark:shadow-black transition-all duration-200"
       style="position: relative; overflow: hidden;">
         <a 
           href={project.url}
@@ -37,14 +36,14 @@ const { projects } = Astro.props;
               {project.title}
             </h2>
             <a 
-              href="https://github.com/lepcodes"
+              href={project.github}
               target="_blank" 
               class="z-20 p-2 rounded-full hover:bg-[#42a19399] backdrop-blur-2xl opacity-90 hover:shadow-2xl"
               style="position: relative;">
               <GithubIcon class="h-5 text-gray-800 dark:text-white"/>
             </a>
           </div>
-          <p class="text-base text-gray-700 dark:text-gray-400">
+          <p class="prose dark:prose-invert text-gray-700 dark:text-gray-400">
             {project.description}
           </p>
           <div class="flex flex-row gap-2 w-full">

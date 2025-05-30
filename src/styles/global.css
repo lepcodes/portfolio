@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
 @custom-variant dark (&:where(.dark, .dark *));
+
+.prose-invert {
+  --tw-prose-body: black;
+  --tw-prose-headings: white;
+}
 
 @theme {
   --font-primary: 'Inter', sans-serif;
@@ -219,10 +225,6 @@ body {
 }
 
 /* Animation for the PopOver */
-
-
-
-
 
 .pulse {
   --pulse-color: rgba(0, 0, 0, 0.4); /* overrides in dark mode */

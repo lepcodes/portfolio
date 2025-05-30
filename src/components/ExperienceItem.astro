@@ -19,7 +19,7 @@ const { experience } = Astro.props;
             {experience.startDate} - {experience.endDate}
         </time>
         <div class="flex flex-col md:w-[80%]">
-            <h3 class="text-xl font-bold">
+            <h3 class="text-lg font-bold">
                 {experience.title}
             </h3>
             <div class="flex flex-row items-center gap-1 text-base font-bold mb-2">
@@ -28,7 +28,7 @@ const { experience } = Astro.props;
                 </h4>
                 <ExternalLinkIcon class="h-4 w-4 group-hover:text-[#31b9b4] group-hover:scale-110 transition-all duration-200"/>
             </div>
-            <p class="text-base text-gray-700 dark:text-gray-400">
+            <p class="prose dark:prose-invert font-normal text-[14px] text-gray-700 dark:text-gray-400">
                 {experience.description}
             </p>
         </div>

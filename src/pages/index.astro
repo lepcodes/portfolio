@@ -9,7 +9,8 @@ import Chat from '../components/chatbot/Chat';
 import NavBar from '../components/NavBar.astro';
 import ChevronIcon from '../icons/ChevronIcon.astro';
 
-import { header, about, experience, projects, education } from './content.ts'
+import { header, experience, projects, education } from '../content/content.ts'
+import { Content } from '../content/about.md'
 ---
 
 <Layout>
@@ -27,7 +28,7 @@ import { header, about, experience, projects, education } from './content.ts'
   <div class="flex gap-22 px-10 md:px-22 justify-evenly w-full">
     <Header header={header}/>
     <main class="flex flex-col gap-24 md:max-w-[600px] md:w-[60%]">
-      <About about={about}/>
+      <About />
       <Experience experience={experience}/>
       <Projects projects={projects}/>
       <Education education={education}/>
