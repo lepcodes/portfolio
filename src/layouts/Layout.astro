@@ -2,6 +2,7 @@
 import "../styles/global.css";
 // import '@fontsource/roboto';
 import '@fontsource/inter';
+import { Toaster } from "@/components/ui/sonner";
 ---
 <!doctype html>
 <html lang="en", class="dark scroll-smooth">
@@ -14,5 +15,6 @@ import '@fontsource/inter';
 	</head>
 	<body class="font-primary" style="line-height: 1.7em;">
 		<slot />
+		<Toaster richColors={true} closeButton={true} theme='light' client:load/>
 	</body>
 </html>

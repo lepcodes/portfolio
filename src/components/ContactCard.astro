@@ -4,23 +4,28 @@ import XIcon from "../icons/XIcon.astro";
 import DownloadIcon from "../icons/DownloadIcon.astro";
 import { Image } from "astro:assets";
 import ProfilePicture from "../../src/assets/ProfilePicture.webp";
+import CopyToClipboard from "./CopyToClipboard";
 
 const contacts = [
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/luispreciado"
+    url: "https://www.linkedin.com/in/luispreciado",
+    clipboard: "https://www.linkedin.com/in/luispreciado"
   },
   {
     name: "GitHub",
-    url: "https://github.com/lepcodes"
+    url: "https://github.com/lepcodes",
+    clipboard: "https://github.com/lepcodes"
   },
   {
     name: "Mail",
-    url: "mailto:luispre99@gmail.com"
+    url: "mailto:luispre99@gmail.com",
+    clipboard: "luispre99@gmail.com"
   },
   {
     name: "Phone",
-    url: "tel:+5715985634"
+    url: "tel:+5715985634",
+    clipboard: "+5715985634"
   }
 ];
 ---
@@ -40,19 +45,9 @@ const contacts = [
       <h1 class="text-xl font-extrabold dark:text-gray-200 mt-1">Luis Preciado</h1>
       <p class="text-sm dark:text-gray-400">AI and Robotics Engineer</p>
     </div>
-    <div class="flex flex-col md:grid md:grid-cols-2 gap-y-4 gap-x-3 text-sm w-fit">
+    <div class="flex flex-col md:grid md:grid-cols-2 gap-y-5 gap-x-3 text-sm w-fit">
       {contacts.map((contact) => (
-        <div class="flex items-center h-8 border border-gray-400 rounded-lg overflow-hidden">
-          <a 
-            href={contact.url} 
-            class="flex items-center justify-center h-full px-2 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-300 bg-white dark:bg-[#00000040] hover:bg-teal-50 dark:hover:bg-[#568e8b3d] transition-all duration-200 flex-1"
-          >
-            {contact.name}
-          </a>
-          <button class="group border h-full w-fit px-1.5 py-1 bg-[#063b3dd1] dark:bg-white font-bold text-white dark:text-black border-transparent hover:cursor-pointer transition-all duration-200">
-            <CopyIcon class="h-4 w-4 dark:bg-white group-hover:text-teal-300 dark:group-hover:text-teal-600 group-hover:scale-110"/>
-          </button>
-        </div>
+        <CopyToClipboard contact={contact} client:load/>
       ))}
     </div>
     <button class="flex items-center self-center border border-gray-700 rounded-lg w-fit px-2 py-1 text-sm bg-white font-bold text-black mt-2 hover:cursor-pointer hover:text-teal-600 transition-all duration-100 mb-4 pulse-glow hover:scale-105 hover:shadow-lg shadow-sm dark:shadow-black group">
