@@ -28,3 +28,9 @@ export interface Project {
   image: string;
   tech: TechnologyType[];
 }
+
+export interface Contact {
+  name: string;
+  url: string;
+  clipboard: string;
+}
