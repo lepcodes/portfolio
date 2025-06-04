@@ -1,3 +1,5 @@
+import type { TechnologyType } from "./tech_types";
+
 export interface Experience {
   title: string;
   description: string;
@@ -16,4 +18,19 @@ export interface Education {
   location: string;
   description: string;
   url: string;
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  url: string;
+  github: string;
+  image: string;
+  tech: TechnologyType[];
+}
+
+export interface Contact {
+  name: string;
+  url: string;
+  clipboard: string;
 }

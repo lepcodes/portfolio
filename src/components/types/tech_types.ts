@@ -1,5 +1,7 @@
 import { FaPython, FaJsSquare, FaReact, FaHtml5, FaCss3 } from 'react-icons/fa';
-import { SiFastapi } from 'react-icons/si';
+import { SiFastapi, SiCmake } from 'react-icons/si';
+import { TbBrandPowershell } from "react-icons/tb";
+import ROSIcon from "../../icons/ROSIcon.astro";
 
 export const Technology = {
     PYTHON: {
@@ -31,7 +33,22 @@ export const Technology = {
       name: "FastAPI",
       color: "#009688",
       icon: SiFastapi
-    }
+    },
+    ROS: {
+      name: "ROS",
+      color: "#9353C1",
+      icon: ROSIcon
+    },
+    SHELL: {
+      name: "Shell Script",
+      color: "#009688",
+      icon: TbBrandPowershell
+    },
+    CMAKE: {
+      name: "CMake",
+      color: "#C73C43",
+      icon: SiCmake
+    },
   }
   
   export type TechnologyType = keyof typeof Technology;

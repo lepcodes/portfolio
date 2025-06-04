@@ -1,26 +1,30 @@
 ---
-import CopyIcon from "../icons/CopyIcon.astro";
 import XIcon from "../icons/XIcon.astro";
 import DownloadIcon from "../icons/DownloadIcon.astro";
 import { Image } from "astro:assets";
 import ProfilePicture from "../../src/assets/ProfilePicture.webp";
+import CopyToClipboard from "./CopyToClipboard";
 
 const contacts = [
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/luispreciado"
+    url: "https://www.linkedin.com/in/luispreciado",
+    clipboard: "https://www.linkedin.com/in/luispreciado"
   },
   {
     name: "GitHub",
-    url: "https://github.com/lepcodes"
+    url: "https://github.com/lepcodes",
+    clipboard: "https://github.com/lepcodes"
   },
   {
     name: "Mail",
-    url: "mailto:luispre99@gmail.com"
+    url: "mailto:luispre99@gmail.com",
+    clipboard: "luispre99@gmail.com"
   },
   {
     name: "Phone",
-    url: "tel:+5715985634"
+    url: "https://wa.link/ou9afg",
+    clipboard: "+52 33 1793 3872"
   }
 ];
 ---
@@ -30,7 +34,7 @@ const contacts = [
       <Image src={ProfilePicture} alt="Picture" class="object-cover hover:scale-107 transition-all duration-200"/>
     </div>
     <div id="close-button" class="hidden rounded-full overflow-hidden">
-      <XIcon class="h-8 w-8 weight-bold text-teal-600 dark:text-teal-600 hover:cursor-pointer dark:hover:text-gray-200 hover:text-gray-600"/>
+      <XIcon class="h-8 w-8 weight-bold  md:text-teal-600 md:dark:text-teal-600 hover:cursor-pointer dark:hover:text-gray-200 hover:text-gray-600"/>
     </div>
   </button>
 
@@ -40,28 +44,20 @@ const contacts = [
       <h1 class="text-xl font-extrabold dark:text-gray-200 mt-1">Luis Preciado</h1>
       <p class="text-sm dark:text-gray-400">AI and Robotics Engineer</p>
     </div>
-    <div class="flex flex-col md:grid md:grid-cols-2 gap-y-4 gap-x-3 text-sm w-fit">
+    <div class="flex flex-col md:grid md:grid-cols-2 gap-y-5 gap-x-3 text-sm w-fit">
       {contacts.map((contact) => (
-        <div class="flex items-center h-8 border border-gray-400 rounded-lg overflow-hidden">
-          <a 
-            href={contact.url} 
-            class="flex items-center justify-center h-full px-2 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-300 bg-white dark:bg-[#00000040] hover:bg-teal-50 dark:hover:bg-[#568e8b3d] transition-all duration-200 flex-1"
-          >
-            {contact.name}
-          </a>
-          <button class="group border h-full w-fit px-1.5 py-1 bg-[#063b3dd1] dark:bg-white font-bold text-white dark:text-black border-transparent hover:cursor-pointer transition-all duration-200">
-            <CopyIcon class="h-4 w-4 dark:bg-white group-hover:text-teal-300 dark:group-hover:text-teal-600 group-hover:scale-110"/>
-          </button>
-        </div>
+        <CopyToClipboard contact={contact} client:load/>
       ))}
     </div>
-    <button class="flex items-center self-center border border-gray-700 rounded-lg w-fit px-2 py-1 text-sm bg-white font-bold text-black mt-2 hover:cursor-pointer hover:text-teal-600 transition-all duration-100 mb-4 pulse-glow hover:scale-105 hover:shadow-lg shadow-sm dark:shadow-black group">
+    <button 
+    onclick="window.open('../../src/assets/Resume.pdf', '_blank')"
+    class="flex items-center self-center border border-gray-700 rounded-lg w-fit px-2 py-1 text-sm bg-white font-bold text-black mt-2 hover:cursor-pointer hover:text-teal-600 transition-all duration-100 mb-4 pulse-glow hover:scale-105 hover:shadow-lg shadow-sm dark:shadow-black group">
       <span>Resume</span><DownloadIcon class="h-4 w-4 ml-1 dark:group-hover:text-teal-600 dark:text-black"/>
     </button>
   </div>
 </div>
 
-<script>
+<!-- <script>
   const popOverToggle = document.getElementById('pop-over-toggle');
   const profilePicture = document.getElementById('profile-picture');
   const closeButton = document.getElementById('close-button');
@@ -77,5 +73,64 @@ const contacts = [
     profilePicture?.classList.toggle('pulse');
     profilePicture?.classList.toggle('hidden');
     closeButton?.classList.toggle('hidden');
+  });
+</script> -->
+<script>
+  const popOverToggle = document.getElementById('pop-over-toggle');
+  const profilePicture = document.getElementById('profile-picture');
+  const closeButton = document.getElementById('close-button');
+  const popOver = document.getElementById('pop-over');
+
+  function openPopOver() {
+    popOver?.classList.remove('hidden');
+    popOver?.classList.add('flex');
+    popOver?.classList.remove('md:animate-pop-over-out-desktop', 'animate-pop-over-out-mobile');
+    popOver?.classList.add('md:animate-pop-over-in-desktop', 'animate-pop-over-in-mobile');
+    profilePicture?.classList.remove('pulse');
+    profilePicture?.classList.add('hidden');
+    closeButton?.classList.remove('hidden');
+  }
+
+  function closePopOver() {
+    if (popOver?.classList.contains('hidden')) return; // Already closing or hidden
+
+    popOver?.classList.remove('md:animate-pop-over-in-desktop', 'animate-pop-over-in-mobile');
+    popOver?.classList.add('md:animate-pop-over-out-desktop', 'animate-pop-over-out-mobile');
+
+    // Define a function to handle hiding after animation
+    const handleAnimationEnd = () => {
+      popOver?.classList.remove('flex');
+      popOver?.classList.add('hidden');
+      // Clean up the event listener to prevent it from firing multiple times
+      popOver?.removeEventListener('animationend', handleAnimationEnd);
+    };
+
+    // Listen for the end of the animation
+    popOver?.addEventListener('animationend', handleAnimationEnd);
+
+    profilePicture?.classList.add('pulse');
+    profilePicture?.classList.remove('hidden');
+    closeButton?.classList.add('hidden');
+  }
+
+  popOverToggle?.addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevents the click from immediately closing the pop-over
+    if (popOver?.classList.contains('hidden')) {
+      openPopOver();
+    } else {
+      closePopOver();
+    }
+  });
+
+  // Listen for clicks on the whole document
+  document.addEventListener('click', (event) => {
+    // Check if the popOver is visible and the click was outside the popOver and not on the toggle button
+    if (
+      !popOver?.classList.contains('hidden') &&
+      !popOver?.contains(event.target as Node) &&
+      !popOverToggle?.contains(event.target as Node)
+    ) {
+      closePopOver();
+    }
   });
 </script>

@@ -4,31 +4,15 @@ import CalendarIcon from "../icons/CalendarIcon.astro";
 import CertificateIcon from "../icons/CertificateIcon.astro";
 import type { Education } from "./types/types";
 
-const education: Education[] = [
-  {
-    title: "Master in Artificial Intelligence",
-    school: "University of California",
-    startDate: "2024",
-    endDate: "Present",
-    location: "San Francisco, CA",
-    description: "Proficiency in Python, JavaScript, HTML, CSS, and React",
-    url: "https://www.google.com"
-  },
-  {
-    title: "Bachelor in Robotics Engineering",
-    school: "University of California",
-    startDate: "2022",
-    endDate: "2024",
-    location: "San Francisco, CA",
-    description: "Research in Robotics, Computer Vision, and Machine Learning",
-    url: "https://www.google.com"
-  },
-];
+interface Props {
+  education: Education[];
+}
 
+const { education } = Astro.props;
 ---
 
 <section id="Education" class="flex flex-col gap-4 animate-fadeIn mb-20">
-  <h1 class="text-3xl font-bold mb-6 dark:text-white">
+  <h1 class="text-3xl font-normal mb-6 dark:text-white">
     Education
   </h1>
   <div class="flex flex-col gap-4">
@@ -38,7 +22,7 @@ const education: Education[] = [
           <SchoolIcon class="h-8 w-8"/> 
         </div>
         <div class="flex flex-col gap-2">
-          <h2 class="text-xl font-bold dark:text-gray-200">
+          <h2 class="text-lg font-bold dark:text-gray-200">
             {education.title}
           </h2>
           <p class="text-base text-[#31b9b4]">  
@@ -49,7 +33,7 @@ const education: Education[] = [
             {education.startDate} - {education.endDate}
           </p>
           <ul>
-            <li class="flex flex-row gap-2 items-center text-gray-700 dark:text-gray-400">
+            <li class="flex flex-row gap-2 items-center prose dark:prose-invert text-sm/loose text-gray-700 dark:text-gray-400">
               {education.description}
             </li>
           </ul>
