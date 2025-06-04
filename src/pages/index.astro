@@ -5,19 +5,18 @@ import About from '../components/About.astro';
 import Experience from '../components/Experience.astro';
 import Education from '../components/Education.astro';
 import Projects from '../components/Projects.astro';
-import Chat from '../components/chatbot/Chat';
 import NavBar from '../components/NavBar.astro';
 import ChevronIcon from '../icons/ChevronIcon.astro';
-
+import Chat from 'lep-chat'
 import { header, experience, projects, education } from '../content/content.ts'
-import { Content } from '../content/about.md'
+
 ---
 
 <Layout>
-  <NavBar />
-  <div class="flex flex-col gap-4 md:gap-8 md:pt-18 h-screen">
+  <div class="flex h-dvh flex-col">
+    <NavBar />
     <Chat client:load/>
-    <a class="fade-in-bounce flex flex-col justify-end items-center text-gray-500 text-sm font-bold hover:text-gray-400 dark:hover:text-white mb-14 md:mb-0" 
+    <a class="fade-in-bounce h-10 flex flex-col justify-end items-center text-gray-500 text-sm font-bold hover:text-gray-400 dark:hover:text-white md:mb-0" 
       href="#About"
       id="Explore">
       Explore Portfolio
@@ -34,13 +33,14 @@ import { Content } from '../content/about.md'
       <Education education={education}/>
     </main>
   </div>
+  
 </Layout>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const colorBgBody = (xPos:number, yPos:number) => {
       if (document.documentElement.classList.contains('dark')) {
-        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`;
+        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgba(0,30,30,1) 0%, #101616 300px)`;
       }
       else {
         return `radial-gradient(circle at ${xPos}px ${yPos}px, rgb(184, 255, 255) 0%, rgba(255, 255, 255, 1) 80px)`;
