@@ -7,7 +7,7 @@ import Education from '../components/Education.astro';
 import Projects from '../components/Projects.astro';
 import NavBar from '../components/NavBar.astro';
 import ChevronIcon from '../icons/ChevronIcon.astro';
-import Chat from 'lep-chat'
+import Wrapper from '../components/Wrapper.tsx';
 import { header, experience, projects, education } from '../content/content.ts'
 
 ---
@@ -15,7 +15,7 @@ import { header, experience, projects, education } from '../content/content.ts'
 <Layout>
   <div class="flex h-dvh flex-col">
     <NavBar />
-    <Chat client:load/>
+    <Wrapper client:load />
     <a class="fade-in-bounce h-10 flex flex-col justify-end items-center text-gray-500 text-sm font-bold hover:text-gray-400 dark:hover:text-white md:mb-0" 
       href="#About"
       id="Explore">
