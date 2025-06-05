@@ -25,7 +25,7 @@ export interface Project {
   description: string;
   url: string;
   github: string;
-  image: string;
+  image: ImageMetadata;
   tech: TechnologyType[];
 }
 
