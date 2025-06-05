@@ -2,8 +2,8 @@
 import LinkedInIcon from "../icons/LinkedInIcon.astro";
 import GithubIcon from "../icons/GithubIcon.astro";
 import MailIcon from "../icons/MailIcon.astro";
-import PhoneIcon from "../icons/PhoneIcon.astro";
 import ResumeIcon from "../icons/ResumeIcon.astro";
+import cvUrl from "../../src/assets/Resume.pdf";
 ---
 
 <div id="Network" class="flex items-center mb-24 gap-4 text-gray-600 dark:text-gray-400">
@@ -49,7 +49,7 @@ import ResumeIcon from "../icons/ResumeIcon.astro";
   <!-- Resume -->
   <a
     class="relative group flex items-center hover:text-teal-500 dark:hover:text-gray-200 mr-0 hover:mr-12 transition-all duration-300 ease-out"
-    href="../../src/assets/Resume.pdf"
+    href={cvUrl}
     target="_blank"
   >
     <ResumeIcon class="h-8 w-8" />

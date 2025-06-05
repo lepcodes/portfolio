@@ -1,4 +1,5 @@
 import type { Education, Experience, Project } from "../components/types/types";
+import OmniControlImage from "../../src/assets/omniControl.webp"
 
 export const header = {
     name: "Luis Preciado",
@@ -37,7 +38,7 @@ export const projects: Project[] = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Voluptate cupidatat labore id et in ex sit. Anim ullamco labore mollit commodo veniam culpa. Ea irure id sit enim ea labore in id laborum ullamco labore consectetur mollit. Ea commodo tempor dolor nostrud cupidatat veniam mollit eiusmod mollit.",
         url: "https://github.com/lepcodes",
         github: "https://github.com/lepcodes/omni_control",
-        image: "../../src/assets/omniControl.webp",
+        image: OmniControlImage,
         tech: ["ROS","SHELL","PYTHON","CMAKE"]
     },
     {
@@ -45,7 +46,7 @@ export const projects: Project[] = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Voluptate cupidatat labore id et in ex sit. Anim ullamco labore mollit commodo veniam culpa. Ea irure id sit enim ea labore in id laborum ullamco labore consectetur mollit. Ea commodo tempor dolor nostrud cupidatat veniam mollit eiusmod mollit.",
         url: "https://www.google.com",
         github: "https://github.com/lepcodes",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        image: OmniControlImage,
         tech: ["PYTHON", "JAVASCRIPT", "HTML"]
     },
     {
@@ -53,7 +54,7 @@ export const projects: Project[] = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Voluptate cupidatat labore id et in ex sit. Anim ullamco labore mollit commodo veniam culpa. Ea irure id sit enim ea labore in id laborum ullamco labore consectetur mollit. Ea commodo tempor dolor nostrud cupidatat veniam mollit eiusmod mollit.",        
         url: "https://www.google.com",
         github: "https://github.com/lepcodes",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        image: OmniControlImage,
         tech: ["PYTHON", "JAVASCRIPT", "HTML"]
     }
 ];

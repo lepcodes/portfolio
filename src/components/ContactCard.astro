@@ -3,6 +3,7 @@ import XIcon from "../icons/XIcon.astro";
 import DownloadIcon from "../icons/DownloadIcon.astro";
 import { Image } from "astro:assets";
 import ProfilePicture from "../../src/assets/ProfilePicture.webp";
+import cvUrl from "../../src/assets/Resume.pdf";
 import CopyToClipboard from "./CopyToClipboard";
 
 const contacts = [
@@ -49,11 +50,12 @@ const contacts = [
         <CopyToClipboard contact={contact} client:load/>
       ))}
     </div>
-    <button 
-    onclick="window.open('../../src/assets/Resume.pdf', '_blank')"
+    <a
+    href={cvUrl}
+    target="_blank"
     class="flex items-center self-center border border-gray-700 rounded-lg w-fit px-2 py-1 text-sm bg-white font-bold text-black mt-2 hover:cursor-pointer hover:text-teal-600 transition-all duration-100 mb-4 pulse-glow hover:scale-105 hover:shadow-lg shadow-sm dark:shadow-black group">
       <span>Resume</span><DownloadIcon class="h-4 w-4 ml-1 dark:group-hover:text-teal-600 dark:text-black"/>
-    </button>
+    </a>
   </div>
 </div>
 
