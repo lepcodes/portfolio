@@ -1,5 +1,6 @@
 import type { Education, Experience, Project } from "../components/types/types";
 import OmniControlImage from "../../src/assets/omniControl.webp"
+import vanillaCalculatorImage from "../../src/assets/vanillaCalculator.webp"
 
 export const header = {
     name: "Luis Preciado",
@@ -36,10 +37,10 @@ export const projects: Project[] = [
     {
         title: "Omni-Control Driver",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Voluptate cupidatat labore id et in ex sit. Anim ullamco labore mollit commodo veniam culpa. Ea irure id sit enim ea labore in id laborum ullamco labore consectetur mollit. Ea commodo tempor dolor nostrud cupidatat veniam mollit eiusmod mollit.",
-        url: "https://github.com/lepcodes",
+        url: "https://www.youtube.com/watch?v=NT2HuSaO69o",
         github: "https://github.com/lepcodes/omni_control",
         image: OmniControlImage,
-        tech: ["ROS","SHELL","PYTHON","CMAKE"]
+        tech: ["PYTHON","CMAKE","SHELL","ROS"]
     },
     {
         title: "IBVS Tello Driver",
@@ -50,12 +51,12 @@ export const projects: Project[] = [
         tech: ["PYTHON", "JAVASCRIPT", "HTML"]
     },
     {
-        title: "Project 3",
+        title: "Vanilla Calculator",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Voluptate cupidatat labore id et in ex sit. Anim ullamco labore mollit commodo veniam culpa. Ea irure id sit enim ea labore in id laborum ullamco labore consectetur mollit. Ea commodo tempor dolor nostrud cupidatat veniam mollit eiusmod mollit.",        
-        url: "https://www.google.com",
-        github: "https://github.com/lepcodes",
-        image: OmniControlImage,
-        tech: ["PYTHON", "JAVASCRIPT", "HTML"]
+        url: "https://lepcodes.github.io/vanilla-calculator/",
+        github: "https://github.com/lepcodes/vanilla-calculator",
+        image: vanillaCalculatorImage,
+        tech: ["JAVASCRIPT", "HTML", "CSS"]
     }
 ];
 
@@ -66,7 +67,7 @@ export const education: Education[] = [
         startDate: "2024",
         endDate: "Current",
         location: "Guadalajara, Mexico",
-        description: "            ",
+        description: "",
         url: "https://www.udg.mx/es/node/79543"
     },
     {
