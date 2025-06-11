@@ -1,6 +1,7 @@
 import type { Education, Experience, Project } from "../components/types/types";
 import OmniControlImage from "../../src/assets/omniControl.webp"
-
+import vanillaCalculatorImage from "../../src/assets/vanillaCalculator.webp"
+import ChatComponent from "../../src/assets/chatComponent.webp";
 export const header = {
     name: "Luis Preciado",
     title: "Robotics Engineer",
@@ -34,29 +35,29 @@ export const experience: Experience[] = [
 
 export const projects: Project[] = [
     {
+        title: "React Chat Component",
+        description: "A production-ready chat component for React and Next.js, published as a distributable NPM package. Designed for easy integration, it features a type-safe API built with TypeScript and encapsulated styling using CSS Modules to prevent conflicts. An implementation of this package is available in this portfolio.",
+        url: "https://lep-chat-demo.vercel.app/",
+        github: "https://github.com/lepcodes/lep-chat",
+        image: ChatComponent,
+        tech: ["TYPESCRIPT", "CSS", "REACT", "NEXTJS"]
+    },
+    {
+        title: "Vanilla Calculator",
+        description: "Built entirely with vanilla JavaScript, HTML, and CSS, this sleek calculator is a feature-rich tool designed for a great user experience. It includes a live-updating operation history panel, full keyboard support, and a clean, fully responsive design that works seamlessly on any device.",
+        url: "https://lepcodes.github.io/vanilla-calculator/",
+        github: "https://github.com/lepcodes/vanilla-calculator",
+        image: vanillaCalculatorImage,
+        tech: ["JAVASCRIPT", "HTML", "CSS"]
+    },
+    {
         title: "Omni-Control Driver",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Voluptate cupidatat labore id et in ex sit. Anim ullamco labore mollit commodo veniam culpa. Ea irure id sit enim ea labore in id laborum ullamco labore consectetur mollit. Ea commodo tempor dolor nostrud cupidatat veniam mollit eiusmod mollit.",
-        url: "https://github.com/lepcodes",
+        description: "The Omni_Control package is a motion control system designed specifically for the Mecano Omnidirectional robot. Leveraging ROS framework, the system's core intelligence is driven by custom Python nodes that implement a sNPID controller for adaptive movement. Aditionally, the package uses Arduino as an interface between the computer and Sabertooth motor drivers.",
+        url: "https://www.youtube.com/watch?v=NT2HuSaO69o",
         github: "https://github.com/lepcodes/omni_control",
         image: OmniControlImage,
-        tech: ["ROS","SHELL","PYTHON","CMAKE"]
+        tech: ["PYTHON","CMAKE","SHELL","ROS"]
     },
-    {
-        title: "IBVS Tello Driver",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Voluptate cupidatat labore id et in ex sit. Anim ullamco labore mollit commodo veniam culpa. Ea irure id sit enim ea labore in id laborum ullamco labore consectetur mollit. Ea commodo tempor dolor nostrud cupidatat veniam mollit eiusmod mollit.",
-        url: "https://www.google.com",
-        github: "https://github.com/lepcodes",
-        image: OmniControlImage,
-        tech: ["PYTHON", "JAVASCRIPT", "HTML"]
-    },
-    {
-        title: "Project 3",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia. Voluptate cupidatat labore id et in ex sit. Anim ullamco labore mollit commodo veniam culpa. Ea irure id sit enim ea labore in id laborum ullamco labore consectetur mollit. Ea commodo tempor dolor nostrud cupidatat veniam mollit eiusmod mollit.",        
-        url: "https://www.google.com",
-        github: "https://github.com/lepcodes",
-        image: OmniControlImage,
-        tech: ["PYTHON", "JAVASCRIPT", "HTML"]
-    }
 ];
 
 export const education: Education[] = [
@@ -66,7 +67,7 @@ export const education: Education[] = [
         startDate: "2024",
         endDate: "Current",
         location: "Guadalajara, Mexico",
-        description: "            ",
+        description: "Machine Learning, Data Science, Deep Learning, Computer Vision, and Natural Language Processing. I have experience with Python, TensorFlow, Keras.",
         url: "https://www.udg.mx/es/node/79543"
     },
     {

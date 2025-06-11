@@ -1,17 +1,11 @@
 ---
-interface Props {
-  class?: string;
-  color?: string;
-}
-
-const { class: className, color } = Astro.props;
+const { className: className } = Astro.props;
 ---
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 128 128"
-  class:list={className}
-  style={{ color: color }}
+  class={className}
 >
   <path
     style="stroke:none;fill-rule:nonzero;"

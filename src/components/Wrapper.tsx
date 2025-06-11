@@ -1,4 +1,5 @@
 import Chat from 'lep-chat'
+// import 'lep-chat/dist/style.css'
 
 async function getResponse(question: string): Promise<string> {
   try {
@@ -21,7 +22,16 @@ async function getResponse(question: string): Promise<string> {
 export default function Wrapper() {
   return (
     <>
-      <Chat onGetResponse={getResponse} />
+      <Chat
+        onGetResponse={getResponse}
+        placeHolder='Any doubts or questions? Ask away!'
+        className=''
+        overline='Hi there! 👋'
+        title="Welcome, I'm"
+        highlightedText='Luis Preciado'
+        gradient={['#b5e9db', '#24bab5', '#177774']}
+        subtitle="Explore my projects, learn about my skills, or contact me for more information."
+      />
     </>
   );
 }

@@ -28,8 +28,8 @@ const { projects } = Astro.props;
           class="absolute inset-0 z-10"
           style="contain: strict;"
         ></a>
-        <div class="w-[100%] h-[200px] overflow-hidden rounded-t-2xl">
-          <Image src={project.image} alt="Test Image" class="rounded-t-2xl w-full h-full object-cover group-hover:scale-115 transition-all duration-500"/>
+        <div class="w-[100%] h-fit max-h-[300px] overflow-hidden rounded-t-2xl aspect-video md:aspect-[16/8]">
+          <Image src={project.image} alt="Test Image" class="rounded-t-2xl w-full object-cover group-hover:scale-115 transition-all duration-500"/>
         </div>
         <div class="flex flex-col p-4 gap-4">
           <div class="flex flex-row gap-2 w-full items-center justify-between">
@@ -47,7 +47,7 @@ const { projects } = Astro.props;
           <p class="prose dark:prose-invert text-gray-700 dark:text-gray-400">
             {project.description}
           </p>
-          <div class="flex flex-row gap-2 w-full">
+          <div class="flex flex-row gap-2 w-full flex-wrap mt-1.5">
             {project.tech.map((tech) => {
               return <TechTag tech={tech as TechnologyType}/>
             })}
