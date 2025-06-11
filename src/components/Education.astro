@@ -15,30 +15,31 @@ const { education } = Astro.props;
   <h1 class="text-3xl font-normal mb-6 dark:text-white">
     Education
   </h1>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-8 md:gap-4">
     {education.map(education => (
-      <article class="flex flex-row gap-4 rounded-2xl p-4 hover:shadow-2xl hover:bg-[#1f938f18] hover:scale-101 transition-all duration-200">
-        <div class="flex items-center border-gray-700 rounded-full p-3 mt-1 bg-[#179b978c] dark:bg-[#1f938f4a] text-white h-fit w-fit">
-          <SchoolIcon class="h-8 w-8"/> 
+      <article class="flex flex-col gap-4 rounded-2xl p-0 md:p-4 hover:shadow-2xl hover:bg-[#1f938f18] hover:scale-101 transition-all duration-200">
+        <div class="flex flex-row gap-4 items-center">
+          <div class="hidden md:flex items-center align-center border-gray-700 rounded-full p-3 mt-1 bg-[#179b978c] dark:bg-[#1f938f4a] text-white h-fit w-fit">
+            <SchoolIcon class="h-8 w-8"/> 
+          </div>
+          <div class="flex flex-col gap-2">
+            <h2 class="text-lg font-bold dark:text-gray-200">
+              {education.title}
+            </h2>
+            <p class="text-base text-[#31b9b4]">  
+              {education.school}
+            </p>
+            <p class="text-base text-gray-500 dark:text-gray-400 flex flex-row gap-2 items-center">
+              <CalendarIcon class="h-4 w-4"/>
+              {education.startDate} - {education.endDate}
+            </p>
+          </div>
         </div>
-        <div class="flex flex-col gap-2">
-          <h2 class="text-lg font-bold dark:text-gray-200">
-            {education.title}
-          </h2>
-          <p class="text-base text-[#31b9b4]">  
-            {education.school}
-          </p>
-          <p class="text-base text-gray-500 dark:text-gray-400 flex flex-row gap-2 items-center">
-            <CalendarIcon class="h-4 w-4"/>
-            {education.startDate} - {education.endDate}
-          </p>
-          <ul>
-            <li class="flex flex-row gap-2 items-center prose dark:prose-invert text-sm/loose text-gray-700 dark:text-gray-400">
-              {education.description}
-            </li>
-          </ul>
-
-        </div>
+        <ul>
+          <li class="flex md:pl-18 flex-row gap-2 items-center prose dark:prose-invert text-sm/loose text-gray-700 dark:text-gray-400">
+            {education.description}
+          </li>
+        </ul>
       </article>
     ))}
 
