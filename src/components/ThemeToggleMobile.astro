@@ -6,28 +6,48 @@ const { class: className = "" } = Astro.props;
 ---
 
 <button id="theme-toggle-m" class={`relative flex items-center gap-2 rounded-full py-1 px-1 text-sm bg-white font-bold text-black hover:cursor-pointer transition-all duration-500 ${className}`}>
-  <SunIcon id="sun-icon" class="h-6 w-6 text-white"/>
   <MoonIcon id="moon-icon" class="h-6 w-6 text-black"/>
+  <SunIcon id="sun-icon" class="h-6 w-6 text-white"/>
   <div id="slider-m" class="absolute left-0 h-6.5 w-6.5 rounded-full bg-black transition-all duration-500 translate-x-1"/>
 </button>
 
 <script>
-  const themeToggle = document.getElementById('theme-toggle-m');
-  const slider = document.getElementById('slider-m');
+// Get references to the DOM elements
+const themeToggle = document.getElementById('theme-toggle-m');
+const slider = document.getElementById('slider-m');
 
-  themeToggle?.addEventListener('click', () => {
-    themeToggle.classList.toggle('bg-white');
-    themeToggle.classList.toggle('bg-black');
-    if (slider) {
-      slider.classList.toggle('bg-black');
-      slider.classList.toggle('bg-white');
-      
-      const moveDistance = themeToggle.offsetWidth - slider.offsetWidth - 8;
-      slider.style.transform = slider.style.transform === `translateX(${moveDistance}px)` 
-        ? 'translateX(0px)'
-        : `translateX(${moveDistance}px)`;
-    }
-      
-    document.documentElement.classList.toggle('dark');
-  });
+if (!themeToggle || !slider) {
+  console.error('Theme toggle or slider element not found.');
+} else {
+  const applyTheme = (theme: string) => {
+    const isDark = theme === 'dark';
+    document.documentElement.classList.toggle('dark', isDark);
+
+    themeToggle.classList.toggle('bg-white', isDark);
+    themeToggle.classList.toggle('bg-black', !isDark);
+
+    slider.classList.toggle('bg-black', isDark);
+    slider.classList.toggle('bg-white', !isDark);
+
+    const moveDistance = themeToggle.offsetWidth - slider.offsetWidth - 8;
+    slider.style.transform = isDark ? `translateX(${moveDistance}px)` : 'translateX(0px)';
+  };
+
+  const handleToggleClick = () => {
+    const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+    applyTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  // Initialization
+  const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const initialTheme = localStorage.getItem('theme') ?? preferredTheme;
+
+  applyTheme(initialTheme);
+  if (localStorage.getItem('theme') !== initialTheme) {
+    localStorage.setItem('theme', initialTheme);
+  }
+  themeToggle.addEventListener('click', handleToggleClick);
+}
+
 </script>
