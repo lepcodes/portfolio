@@ -29,15 +29,5 @@ const { class: className = "" } = Astro.props;
     }
       
     document.documentElement.classList.toggle('dark');
-
-    const colorBgBody = (xPos:number, yPos:number) => {
-      if (document.documentElement.classList.contains('dark')) {
-        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 800px)`;
-      }
-      else {
-        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgb(184, 255, 255) 0%, rgba(255, 255, 255, 1) 80px)`;
-      }
-    }
-    document.body.style.background = colorBgBody(themeToggle.offsetLeft, themeToggle.offsetTop);
   });
 </script>

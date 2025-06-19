@@ -29,7 +29,7 @@ export default function Wrapper() {
         overline='Hi there! 👋'
         title="Welcome, I'm"
         highlightedText='Luis Preciado'
-        gradient={['#b5e9db', '#24bab5', '#177774']}
+        gradient={['#ddd', '#999']}
         subtitle="Explore my projects, learn about my skills, or contact me for more information."
       />
     </>

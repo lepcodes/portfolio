@@ -13,10 +13,10 @@ import { header, experience, projects, education } from '../content/content.ts'
 ---
 
 <Layout>
-  <div class="flex h-dvh flex-col">
+  <div class="flex h-dvh flex-col justify-center items-center">
     <NavBar />
     <Wrapper client:load />
-    <a class="fade-in-bounce h-10 flex flex-col justify-end items-center text-gray-500 text-sm font-bold hover:text-gray-400 dark:hover:text-white md:mb-0" 
+    <a class="hoverable fade-in-bounce h-10 w-fit px-8 flex flex-col justify-end items-center text-gray-500 text-sm font-bold hover:text-[#000] dark:hover:text-white md:mb-0" 
       href="#About"
       id="Explore">
       Explore Portfolio
@@ -34,18 +34,25 @@ import { header, experience, projects, education } from '../content/content.ts'
     </main>
   </div>
   
+  <div class="cursor">
+    <div class="cursor__ball cursor__ball--big ">
+      <svg height="30" width="30">
+        <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
+      </svg>
+    </div>
+    
+    <div class="cursor__ball cursor__ball--small">
+      <svg height="10" width="10">
+        <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+      </svg>
+    </div>
+  </div>
 </Layout>
 
 <script>
+  import gsap from 'gsap';
+
   document.addEventListener('DOMContentLoaded', () => {
-    const colorBgBody = (xPos:number, yPos:number) => {
-      if (document.documentElement.classList.contains('dark')) {
-        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgba(0,30,30,1) 0%, #101616 300px)`;
-      }
-      else {
-        return `radial-gradient(circle at ${xPos}px ${yPos}px, rgb(184, 255, 255) 0%, rgba(255, 255, 255, 1) 80px)`;
-      }
-    }
     
     const explore = document.querySelector('#Explore');
     const body = document.querySelector('body');
@@ -60,27 +67,41 @@ import { header, experience, projects, education } from '../content/content.ts'
         explore?.classList.remove('fade-out-bt');
         explore?.classList.add('fade-in-bounce');
       }
+    });
 
-      if (body) {
-        const lastMouseEvent = body.dataset.lastMouseEvent; // Store the last mouse event
-        if (lastMouseEvent) {
-          const e = JSON.parse(lastMouseEvent);
-          const yPos = e.clientY + window.scrollY;
-          body.style.background = colorBgBody(e.clientX, yPos);
-        }
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      const bigBall = document.querySelector('.cursor__ball--big');
+      const smallBall = document.querySelector('.cursor__ball--small');
+
+      const hoverables = document.querySelectorAll('.hoverable');
+      hoverables.forEach((hoverable) => {
+        hoverable.addEventListener('mouseenter', onMouseHover);
+        hoverable.addEventListener('mouseleave', onMouseHoverOut);
+      });
+      function onMouseHover(this: HTMLElement) {
+        this.style.cursor = 'pointer';
+        smallBall?.classList.add('hidden');
+        gsap.to(bigBall, {duration: 0.3, scale: 4})
       }
-    });
-    
-    document.addEventListener('mousemove', (e) => {
-      console.log(window.scrollY);
-      if (body) {
-        body.style.background = colorBgBody(e.clientX, e.clientY+window.scrollY);
+      function onMouseHoverOut(this: HTMLElement) {
+        this.style.cursor = 'none';
+        smallBall?.classList.remove('hidden');
+        gsap.to(bigBall, {duration: 0.3,scale: 1})
       }
-    });
-    document.addEventListener('mousemove', (e) => {
-      if (body) {
-        body.dataset.lastMouseEvent = JSON.stringify({ clientX: e.clientX, clientY: e.clientY });
-      }
-    });
+      document.addEventListener('mousemove', (e) => {
+        gsap.to(bigBall, {
+          opacity: 1,
+          duration: 0.4,
+          x: e.clientX-15,
+          y: e.clientY-15,
+        });
+        gsap.to(smallBall, {
+          opacity: 1,
+          duration: 0.1,
+          x: e.clientX-5,
+          y: e.clientY-5,
+        });
+      });
+    }
   });
 </script>
