@@ -1,4 +1,5 @@
 import Chat from 'lep-chat'
+import { useState, useEffect } from 'react'
 // import 'lep-chat/dist/style.css'
 
 async function getResponse(question: string): Promise<string> {
@@ -20,6 +21,23 @@ async function getResponse(question: string): Promise<string> {
 };
 
 export default function Wrapper() {
+  const [darkMode, setDarkMode] = useState<boolean>(true);
+  useEffect(() => {
+    const checkTheme = () => {
+      setDarkMode(document.documentElement.classList.contains('dark') ? true : false);
+    };
+    checkTheme();
+
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  const x = '#d1d1d1'
   return (
     <>
       <Chat
@@ -29,7 +47,7 @@ export default function Wrapper() {
         overline='Hi there! 👋'
         title="Welcome, I'm"
         highlightedText='Luis Preciado'
-        gradient={['#b5e9db', '#24bab5', '#177774']}
+        gradient={darkMode ? ['#666', "#ddd"] : ['#aaa', '#333']}
         subtitle="Explore my projects, learn about my skills, or contact me for more information."
       />
     </>

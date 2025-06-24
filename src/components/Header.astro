@@ -21,8 +21,8 @@ const sections = [
             <h3 class="text-md text-gray-700 dark:text-gray-400">
               {header.description}
             </h3>
-            <div class="border-2 flex items-center gap-2 rounded-full px-2 py-1 text-xs tracking-wider text-green-600 border-green-400 dark:text-green-300 dark:border-green-600"> 
-                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+            <div class="border-2 flex items-center gap-2 rounded-full px-2 py-1 text-xs tracking-wider  text-[#31b9b4] border-[#31b9b4]"> 
+                <span class="w-2 h-2 bg-[#31b9b4] rounded-full"></span>
                 Open to Work
             </div>
         </div>
@@ -30,11 +30,11 @@ const sections = [
         <nav class="flex flex-col w-fit text-xs font-bold tracking-[0.25em] dark:text-gray-900">
             {sections.map((section) => (
                 <a 
-                class="flex items-center gap-2 group text-gray-400 dark:text-gray-500 hover:text-black dark:hover:text-white"
+                class="flex items-center gap-2 group "
                 href={section.href} 
                 >
-                    <span class="h-[2px] w-12 group-hover:w-24 bg-gray-400 dark:bg-gray-500 group-hover:bg-black dark:group-hover:bg-white transition-all duration-200"></span>
-                    <h2 class="py-2.5 flex-1 group-hover:text-black dark:group-hover:text-white transition-all duration-200">
+                    <span class="h-[2px] w-12 group-hover:w-24 group-hover:bg-black dark:group-hover:bg-white transition-all duration-200"></span>
+                    <h2 class="py-2.5 flex-1 transition-all group-hover:text-black dark:group-hover:text-white duration-200">
                         {section.title}
                     </h2>
                 </a>
@@ -55,13 +55,21 @@ const sections = [
         if (entry.isIntersecting) {
           console.log(entry.target.id);
           navLinks?.forEach((link) => {
-            link.classList.toggle('text-teal-600', link.getAttribute('href') === '#' + entry.target.id);
-            link.classList.toggle('dark:text-teal-500', link.getAttribute('href') === '#' + entry.target.id);
+            const isActive = link.getAttribute('href') === '#' + entry.target.id;
+            const h2 = link.querySelector('h2');
+            if (h2) {
+              h2.classList.toggle('text-black', isActive);
+              h2.classList.toggle('dark:text-white', isActive);
+              h2.classList.toggle('text-gray-400', !isActive);
+              h2.classList.toggle('dark:text-gray-500', !isActive);
+            }
             const span = link.querySelector('span');
             if (span) {
-              span.classList.toggle('w-24', link.getAttribute('href') === '#' + entry.target.id);
-              span.classList.toggle('bg-teal-600', link.getAttribute('href') === '#' + entry.target.id);
-              span.classList.toggle('dark:bg-teal-500', link.getAttribute('href') === '#' + entry.target.id);
+              span.classList.toggle('w-24', isActive);
+              span.classList.toggle('bg-black', isActive);
+              span.classList.toggle('dark:bg-white', isActive);
+              span.classList.toggle('bg-gray-400', !isActive);
+              span.classList.toggle('dark:bg-gray-500', !isActive);
             }
           });
         }

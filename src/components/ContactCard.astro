@@ -3,8 +3,8 @@ import XIcon from "../icons/XIcon.astro";
 import DownloadIcon from "../icons/DownloadIcon.astro";
 import { Image } from "astro:assets";
 import ProfilePicture from "../../src/assets/ProfilePicture.webp";
-import cvUrl from "../../src/assets/Resume.pdf";
 import CopyToClipboard from "./CopyToClipboard";
+const cvUrl = "https://lepcodes.github.io/resume/full/resume.pdf";
 
 const contacts = [
   {
@@ -30,22 +30,22 @@ const contacts = [
 ];
 ---
 <div>
-  <button id="pop-over-toggle" class="h-10 w-10 flex items-center justify-center hover:scale-120 transition-all duration-200">
-    <div id="profile-picture" class="m-0 border overflow-hidden pulse dark:border-white border-gray-700 rounded-full hover:cursor-pointer hover:border-teal-700 ">
-      <Image src={ProfilePicture} alt="Picture" class="object-cover hover:scale-107 transition-all duration-200"/>
+  <button id="pop-over-toggle" class="hoverable h-11 w-11 flex items-center justify-center hover:scale-120 transition-all duration-200 group">
+    <div id="profile-picture" class="m-0 border overflow-hidden pulse dark:border-white border-gray-700 rounded-full hover:cursor-pointer hover:bg-black">
+      <Image src={ProfilePicture} alt="Picture" class="object-cover hover:scale-115 transition-all duration-200 group-hover:invert"/>
     </div>
     <div id="close-button" class="hidden rounded-full overflow-hidden">
-      <XIcon class="h-8 w-8 weight-bold  md:text-teal-600 md:dark:text-teal-600 hover:cursor-pointer dark:hover:text-gray-200 hover:text-gray-600"/>
+      <XIcon class="h-8 w-8 weight-bold  md:hover:text-teal-600 md:hover:dark:text-teal-600 hover:cursor-pointer dark:hover:text-gray-200 hover:text-gray-600"/>
     </div>
   </button>
 
-  <div id="pop-over" class="hidden flex-col absolute top-full left-0 md:top-[90%] md:left-10 h-screen md:h-fit items-center gap-4 border border-gray-400 dark:border-gray-700 shadow-lg dark:shadow-black md:rounded-lg py-4 px-8 bg-white dark:bg-teal-950 md:dark:bg-[#18262aad] overflow-hidden animate-pop-over-out-mobile md:animate-pop-over-out-desktop">  
+  <div id="pop-over" class="hidden flex-col absolute top-full left-0 md:top-[90%] md:left-10 h-screen md:h-fit items-center gap-4 border border-gray-400 dark:border-gray-500 shadow-lg dark:shadow-black md:rounded-lg py-4 px-8 bg-white dark:bg-[#333] md:dark:bg-[#242424ad] overflow-hidden animate-pop-over-out-mobile md:animate-pop-over-out-desktop">  
     <div class="flex flex-col items-center gap-2 m-2 mt-4 ">
       <Image src={ProfilePicture} alt="Picture" width="128" height=128 class="object-cover rounded-full self-center border-2"/>
       <h1 class="text-xl font-extrabold dark:text-gray-200 mt-1">Luis Preciado</h1>
       <p class="text-sm dark:text-gray-400">AI and Robotics Engineer</p>
     </div>
-    <div class="flex flex-col md:grid md:grid-cols-2 gap-y-5 gap-x-3 text-sm w-fit">
+    <div class="hoverable flex flex-col md:grid md:grid-cols-2 gap-y-5 gap-x-3 text-sm w-fit">
       {contacts.map((contact) => (
         <CopyToClipboard contact={contact} client:load/>
       ))}
@@ -53,7 +53,7 @@ const contacts = [
     <a
     href={cvUrl}
     target="_blank"
-    class="flex items-center self-center border border-gray-700 rounded-lg w-fit px-2 py-1 text-sm bg-white font-bold text-black mt-2 hover:cursor-pointer hover:text-teal-600 transition-all duration-100 mb-4 pulse-glow hover:scale-105 hover:shadow-lg shadow-sm dark:shadow-black group">
+    class="hoverable flex items-center self-center border border-gray-700 rounded-lg w-fit px-2 py-1 text-sm bg-white font-bold text-black mt-2 hover:cursor-pointer hover:text-teal-600 transition-all duration-100 mb-4 pulse-glow hover:scale-110 hover:shadow-lg shadow-sm dark:shadow-black group">
       <span>Resume</span><DownloadIcon class="h-4 w-4 ml-1 dark:group-hover:text-teal-600 dark:text-black"/>
     </a>
   </div>

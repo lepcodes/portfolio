@@ -68,48 +68,43 @@
   }
 }
 
-.dark {
-  --color-bg-body: radial-gradient(circle at 50% 50vh, rgba(0,35,35,1) 0%, rgba(0,0,0,1) 1000px);
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
-}
-
 html {
   scroll-padding-top: 6rem;
 }
 
 body {
   overflow-x: hidden;
-  background: #101616;
+  background: white;
+  cursor: none;
+}
+
+a {
+  cursor: none;
+}
+
+.dark body {
+  background: radial-gradient(
+    circle at 50% 50%,
+    hsl(0deg 0% 12%) 0%,
+    hsl(344deg 0% 11%) 7%,
+    hsl(344deg 0% 10%) 13%,
+    hsl(344deg 0% 10%) 20%,
+    hsl(344deg 0% 9%) 27%,
+    hsl(344deg 0% 9%) 33%,
+    hsl(344deg 0% 8%) 40%,
+    hsl(344deg 0% 7%) 47%,
+    hsl(344deg 0% 7%) 53%,
+    hsl(344deg 0% 6%) 60%,
+    hsl(344deg 0% 5%) 67%,
+    hsl(344deg 0% 4%) 73%,
+    hsl(344deg 0% 3%) 80%,
+    hsl(344deg 0% 2%) 87%,
+    hsl(344deg 0% 1%) 93%,
+    hsl(0deg 0% 0%) 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
 }
 
 @layer components {
@@ -382,4 +377,21 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.cursor {
+  pointer-events: none;
+}
+
+.cursor__ball {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  mix-blend-mode: exclusion;
+  z-index: 1000;
+}
+
+.cursor__ball circle {
+  fill: #e4e4e4; /* A light, off-white color */
 }
