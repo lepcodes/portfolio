@@ -2,6 +2,7 @@ import type { Education, Experience, Project } from "../components/types/types";
 import OmniControlImage from "../../src/assets/omniControl.webp"
 import vanillaCalculatorImage from "../../src/assets/vanillaCalculator.webp"
 import ChatComponent from "../../src/assets/chatComponent.webp";
+import AvocadoShelfLifeImage from "../../src/assets/avocadoAPI.webp";
 export const header = {
     name: "Luis Preciado",
     title: "Robotics Engineer",
@@ -34,6 +35,15 @@ export const experience: Experience[] = [
 ];
 
 export const projects: Project[] = [
+    {
+        title: "Avocado Shelf-Life Predictor",
+        description: "A Deep Learning model that predicts the shelf-life of avocados based on their photographs. Built using TensorFlow and Keras and applying MLOps practices to ensure model accuracy and scalability.",
+        url: "https://avocado-ui.lepcodes.com/",
+        github: "https://github.com/lepcodes/avocado-ripening",
+        image: AvocadoShelfLifeImage,
+        tech: ["PYTHON", "TENSORFLOW", "KERAS", "DOCKER", "CLOUD"]
+
+    },
     {
         title: "React Chat Component",
         description: "A production-ready chat component for React and Next.js, published as a distributable NPM package. Designed for easy integration, it features a type-safe API built with TypeScript and encapsulated styling using CSS Modules to prevent conflicts. An implementation of this package is available in this portfolio.",

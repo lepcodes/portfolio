@@ -1,5 +1,5 @@
 import { FaPython, FaJsSquare, FaReact, FaHtml5, FaCss3 } from 'react-icons/fa';
-import { SiFastapi, SiCmake, SiNextdotjs } from 'react-icons/si';
+import { SiFastapi, SiCmake, SiNextdotjs, SiTensorflow, SiKeras, SiDocker, SiIcloud } from 'react-icons/si';
 import { TbBrandPowershell } from "react-icons/tb";
 import { BiLogoTypescript } from "react-icons/bi";
 import ROSIcon from "../../icons/ROSIcon.astro";
@@ -60,6 +60,26 @@ export const Technology = {
       color: ["#ffffff", "#000000"],
       icon: SiNextdotjs
     },
+    TENSORFLOW: {
+      name: "TensorFlow",
+      color: ["#FF6F00", "#FF6F00"],
+      icon: SiTensorflow
+    },
+    KERAS: {
+      name: "Keras",
+      color: ["#D00000", "#D00000"],
+      icon: SiKeras
+    },
+    DOCKER: {
+      name: "Docker",
+      color: ["#4693d4", "#4693d4"],
+      icon: SiDocker
+    },
+    CLOUD: {
+      name: "Cloud",
+      color: ["#009688", "#009688"],
+      icon: SiIcloud
+    }
   }
   
   export type TechnologyType = keyof typeof Technology;
