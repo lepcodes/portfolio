@@ -1,13 +1,14 @@
 import { FaPython, FaJsSquare, FaReact, FaHtml5, FaCss3 } from 'react-icons/fa';
-import { SiFastapi, SiCmake, SiNextdotjs, SiTensorflow, SiKeras, SiDocker, SiIcloud } from 'react-icons/si';
+import { SiFastapi, SiCmake, SiNextdotjs, SiTensorflow, SiKeras, SiDocker, SiOracle, SiMlflow, SiPrefect, SiGithubactions } from 'react-icons/si';
 import { TbBrandPowershell } from "react-icons/tb";
 import { BiLogoTypescript } from "react-icons/bi";
+import { IoInfiniteSharp } from "react-icons/io5";
 import ROSIcon from "../../icons/ROSIcon.astro";
 
 export const Technology = {
     PYTHON: {
       name: "Python",
-      color: ["#4693d4", "#4693d4"],
+      color: ["#3775a9", "#3775a9"],
       icon: FaPython
     },
     JAVASCRIPT: {
@@ -72,14 +73,34 @@ export const Technology = {
     },
     DOCKER: {
       name: "Docker",
-      color: ["#4693d4", "#4693d4"],
+      color: ["#1d63ed", "#1d63ed"],
       icon: SiDocker
     },
-    CLOUD: {
-      name: "Cloud",
+    OCI: {
+      name: "OCI (Cloud)",
+      color: ["#c74634", "#c74634"],
+      icon: SiOracle
+    },
+    CICD: {
+      name: "CI/CD",
       color: ["#009688", "#009688"],
-      icon: SiIcloud
-    }
+      icon: IoInfiniteSharp
+    },
+    GITHUB_ACTIONS: {
+      name: "GitHub Actions",
+      color: ["#b5038b", "#b5038b"],
+      icon: SiGithubactions
+    },
+    MLFLOW: {
+      name: "MLFlow",
+      color: ["#49cbee", "#49cbee"],
+      icon: SiMlflow
+    },
+    PREFECT: {
+      name: "Prefect",
+      color: ["#ffffff", "#000000"  ],
+      icon: SiPrefect
+    },
   }
   
   export type TechnologyType = keyof typeof Technology;
