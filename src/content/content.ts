@@ -5,8 +5,8 @@ import ChatComponent from "../../src/assets/chatComponent.webp";
 import AvocadoShelfLifeImage from "../../src/assets/avocadoAPI.webp";
 export const header = {
     name: "Luis Preciado",
-    title: "Robotics Engineer",
-    description: "I'm a robotics engineer focused on machine learning and front-end development."
+    title: "Machine Learning & Robotics Engineer",
+    description: "Robotics Engineer specializing in AI. I combine systems engineering with advanced M.Sc. training to build intelligent, data-driven software solutions."
 }
 
 export const experience: Experience[] = [
@@ -41,7 +41,7 @@ export const projects: Project[] = [
         url: "https://avocado-ui.lepcodes.com/",
         github: "https://github.com/lepcodes/avocado-ripening",
         image: AvocadoShelfLifeImage,
-        tech: ["PYTHON", "TENSORFLOW", "KERAS", "DOCKER", "CLOUD"]
+        tech: ["PYTHON", "TENSORFLOW", "DOCKER", "OCI", "GITHUB_ACTIONS", "FASTAPI", "MLFLOW", "PREFECT"]
 
     },
     {
